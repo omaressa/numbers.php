@@ -27,3 +27,14 @@
 		}
 		return false;
 	}
+	
+	test('subtraction should throw an exception last element is not a number', testBasicSubtraction04);
+	function testBasicSubtraction04() {
+		try {
+			NumbersBasic::subtraction(array(1, 1, 2, 'test'));
+		}
+		catch(Exception $e) {
+			return $e->getMessage() == 'All elements in array must be numbers';
+		}
+		return false;
+	}

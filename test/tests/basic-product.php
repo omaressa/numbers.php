@@ -23,6 +23,7 @@
 	function testBasicProduct03() {
 		try {
 			NumbersBasic::product(array(1, 2, 'error'));
+			NumbersBasic::product(array('error', 1, 2));
 		}
 		catch(Exception $e) {
 			return $e->getMessage() == 'All elements in array must be numbers';
