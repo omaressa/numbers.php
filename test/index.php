@@ -76,3 +76,12 @@
 	echo '<h2>Testing Generators</h2>';
 	require('tests/generators-fibonacci.php');
 	require('tests/generators-collatz.php');
+	
+	echo '<h2>Testing Prime Number Mathematics</h2>';
+	require('tests/prime-simple.php');
+	require('tests/prime-factorization.php');
+	require('tests/prime-millerrabin.php');
+	require('tests/prime-sieve.php');
+	require('tests/prime-coprime.php');
+	require('tests/prime-getperfectpower.php');
+	require('tests/prime-getprimepower.php');

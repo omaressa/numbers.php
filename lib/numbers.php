@@ -29,6 +29,6 @@
 	require_once('numbers/complex.php');
 	require_once('numbers/dsp.php');
 	// require_once('numbers/matrix.php');
-	// require_once('numbers/prime.php');
+	require_once('numbers/prime.php');
 	require_once('numbers/statistic.php');
 	require_once('numbers/generators.php');

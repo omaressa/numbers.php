@@ -8,7 +8,7 @@ Numbers.php provides a comprehensive set of mathematical tools that currently ar
 * Basic calculations
 * Calculus
 * <s>Matrix Operations</s> - coming soon
-* <s>Prime Numbers</s> - coming soon
+* Prime Numbers
 * Statistics
 * More...
 
