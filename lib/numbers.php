@@ -27,3 +27,4 @@
 	require_once('numbers/basic.php');
 	require_once('numbers/calculus.php');
 	require_once('numbers/complex.php');
+	require_once('numbers/dsp.php');
