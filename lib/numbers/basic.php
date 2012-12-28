@@ -338,7 +338,7 @@
 		 * @param {Number} second number.
 		 * @param {Number} epsilon.
 		 */
-		public static function numbersEqual($first, $second, $epsilon) {
+		public static function numbersEqual($first, $second, $epsilon = Numbers::EPSILON) {
 			$delta = $first - $second;
 			return $delta < $epsilon && $delta > -$epsilon;
 		}
