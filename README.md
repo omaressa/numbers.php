@@ -49,7 +49,6 @@ function myFunc(x) {
 NumbersCalculus::riemann(myFunc, -2, 4, 200);
 NumbersCalculus::adaptiveSimpson(myFunc, -2, 4, 0.0001);
 ```
-
 <!--
 Now say we wanted to run some matrix calculations:
 
@@ -67,17 +66,16 @@ We can transpose a matrix
 ```javascript
 numbers.matrix.transpose(array);
 ```
-
+-->
 Numbers also includes some basic prime number analysis.  We can check if a number is prime:
 
-```javascript
+```pho
 //basic check
-numbers.prime.simple(number);
+NumbersPrime::simple($number);
 
-//elliptic analysis (good for huge numbers)
-numbers.prime.elliptic(number);
+// Miller–Rabin primality test
+NumbersPrime::millerRabin($number);
 ```
--->
 
 The statistics tools include mean, median, mode, standard deviation, random sample generator, correlation, confidence intervals, t-test, chi-square, and more.
 
