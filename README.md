@@ -69,7 +69,7 @@ numbers.matrix.transpose(array);
 -->
 Numbers also includes some basic prime number analysis.  We can check if a number is prime:
 
-```pho
+```php
 //basic check
 NumbersPrime::simple($number);
 
