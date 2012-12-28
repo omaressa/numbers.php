@@ -166,10 +166,7 @@
 			$yLog = array_map(log, $arrayY);
 			$yLogSum = NumbersBasic::sum($yLog);
 			$xSquaredSum = NumbersBasic::sum(array_map(array(NumbersBasic, square), $arrayX));
-			
-			$xyLogSum = 0;
-			for($i = 0; $i < $arrayLength; ++$i)
-				$xyLogSum += $arrayX[$i] * $yLog[$i];
+			$xyLogSum = NumbersBasic::sum(array_map(create_function('$x, $yLog', 'return $x * $yLog;'), $arrayX, $yLog));
 
 			$a = ($yLogSum * $xSquaredSum - $xSum * $xyLogSum) / ($arrayLength * $xSquaredSum - $xSum * $xSum);
 			$b = ($arrayLength * $xyLogSum - $xSum * $yLogSum) / ($arrayLength * $xSquaredSum - $xSum * $xSum);
