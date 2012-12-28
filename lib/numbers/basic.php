@@ -273,19 +273,19 @@
 			// If b < -1 should be a small number, this method should work for now.
 			if($b < -1)
 				return pow($a, $b) % $m;
-			if($b === 0)
+			if($b == 0)
 				return 1 % $m;
 			if($b >= 1) {
 				$result = 1;
 				while($b > 0) {
-					if($b % 2 === 1)
-						$result = ($result * $a) % $m;
-					$a = $a*$a % $m;
+					if($b % 2 == 1)
+						$result = fmod($result * $a, $m);
+					$a = fmod($a * $a, $m);
 					$b = $b >> 1;
 				}
 				return $result;
 			}
-			if($b === -1)
+			if($b == -1)
 				return self::modInverse($a, $m);
 			if($b < 1)
 				return self::powerMod($a, pow($b, -1), $m);
