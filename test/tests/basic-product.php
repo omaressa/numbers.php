@@ -1,5 +1,5 @@
 <?php
-	test('product should return the product of items in an array', testBasicProduct01);
+	test('product should return the product of items in an array', 'testBasicProduct01');
 	function testBasicProduct01() {
 		if(NumbersBasic::product(array(1, 2, 3, 4)) != 24)
 			return false;
@@ -8,7 +8,7 @@
 		return true;
 	}
 	
-	test('product should throw an exception when given anything but an array', testBasicProduct02);
+	test('product should throw an exception when given anything but an array', 'testBasicProduct02');
 	function testBasicProduct02() {
 		try {
 			NumbersBasic::product(1);
@@ -19,7 +19,7 @@
 		return false;
 	}
 	
-	test('product should throw an exception when given anything objects other than numbers', testBasicProduct03);
+	test('product should throw an exception when given anything objects other than numbers', 'testBasicProduct03');
 	function testBasicProduct03() {
 		try {
 			NumbersBasic::product(array(1, 2, 'error'));

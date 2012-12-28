@@ -1,5 +1,5 @@
 <?php
-	test('sieve should be able to determine if a number is prime or not', testPrimeSieve);
+	test('sieve should be able to determine if a number is prime or not', 'testPrimeSieve');
 	function testPrimeSieve() {
 		$results[] = array(NumbersPrime::sieve(1));
 		$results[] = array(NumbersPrime::sieve(2), 2);

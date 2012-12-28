@@ -101,7 +101,7 @@
 				return 1;
 			if($n == 0 && $k > 0)
 				return 0;
-			if(isset($array[$n]) && $array[$n][$k] > 0)
+			if(isset($array[$n]) && isset($array[$n][$k]) && $array[$n][$k] > 0)
 				return $array[$n][$k];
 			if(!isset($array[$n]))
 				$array[$n] = array();

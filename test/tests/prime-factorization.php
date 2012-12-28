@@ -1,5 +1,5 @@
 <?php
-	test('factorization should return an empty array for values < 2, infinite or not numeric', testPrimeFactorization01);
+	test('factorization should return an empty array for values < 2, infinite or not numeric', 'testPrimeFactorization01');
 	function testPrimeFactorization01() {
 		$results[] = NumbersPrime::factorization(INF);
 		$results[] = NumbersPrime::factorization();
@@ -13,7 +13,7 @@
 		return true;
 	}
 	
-	test('factorization should return the prime factors for x where 1 < x < infinity', testPrimeFactorization02);
+	test('factorization should return the prime factors for x where 1 < x < infinity', 'testPrimeFactorization02');
 	function testPrimeFactorization02() {
 		$results[] = array(NumbersPrime::factorization(2), 2);
 		$results[] = array(NumbersPrime::factorization(6), 2, 3);

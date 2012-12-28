@@ -59,6 +59,34 @@
 	require('tests/dsp-segment.php');
 	require('tests/dsp-fft.php');
 	
+	echo '<h2>Testing Matrix Mathematics</h2>';
+	require('tests/matrix-deepcopy.php');
+	require('tests/matrix-issquare.php');
+	require('tests/matrix-addition.php');
+	require('tests/matrix-scalar.php');
+	require('tests/matrix-transpose.php');
+	require('tests/matrix-identity.php');
+	require('tests/matrix-dotproduct.php');
+	require('tests/matrix-multiply.php');
+	require('tests/matrix-determinant.php');
+	require('tests/matrix-lupdecomposition.php');
+	require('tests/matrix-rotate.php');
+	require('tests/matrix-scale.php');
+	require('tests/matrix-shear.php');
+	require('tests/matrix-affine.php');
+	require('tests/matrix-rowscale.php');
+	require('tests/matrix-rowswitch.php');
+	require('tests/matrix-rowaddmultiple.php');
+	
+	echo '<h2>Testing Prime Number Mathematics</h2>';
+	require('tests/prime-simple.php');
+	require('tests/prime-factorization.php');
+	require('tests/prime-millerrabin.php');
+	require('tests/prime-sieve.php');
+	require('tests/prime-coprime.php');
+	require('tests/prime-getperfectpower.php');
+	require('tests/prime-getprimepower.php');
+	
 	echo '<h2>Testing Statistics Mathematics</h2>';
 	require('tests/statistic-mean.php');
 	require('tests/statistic-median.php');
@@ -76,12 +104,3 @@
 	echo '<h2>Testing Generators</h2>';
 	require('tests/generators-fibonacci.php');
 	require('tests/generators-collatz.php');
-	
-	echo '<h2>Testing Prime Number Mathematics</h2>';
-	require('tests/prime-simple.php');
-	require('tests/prime-factorization.php');
-	require('tests/prime-millerrabin.php');
-	require('tests/prime-sieve.php');
-	require('tests/prime-coprime.php');
-	require('tests/prime-getperfectpower.php');
-	require('tests/prime-getprimepower.php');

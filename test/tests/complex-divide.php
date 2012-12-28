@@ -1,5 +1,5 @@
 <?php
-	test('divide should return the product of two complex numbers', testComplexDivide);
+	test('divide should return the product of two complex numbers', 'testComplexDivide');
 	function testComplexDivide() {
 		$a = new NumbersComplex(10, 0);
 		$b = new NumbersComplex(0, 10);

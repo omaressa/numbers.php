@@ -1,5 +1,5 @@
 <?php
-	test('Lanczos approximation gamma should return correct values', testCalculusLanczosGamma);
+	test('Lanczos approximation gamma should return correct values', 'testCalculusLanczosGamma');
 	function testCalculusLanczosGamma() {
 		if(Numbers::EPSILON <= 9.513507698668736 - NumbersCalculus::lanczosGamma(0.1))
 			return false;

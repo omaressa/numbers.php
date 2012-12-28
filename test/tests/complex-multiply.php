@@ -1,5 +1,5 @@
 <?php
-	test('multiply should return the product of two complex numbers', testComplexMultiply);
+	test('multiply should return the product of two complex numbers', 'testComplexMultiply');
 	function testComplexMultiply() {
 		$a = new NumbersComplex(3, 4);
 		$b = new NumbersComplex(5, 6);

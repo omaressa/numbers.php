@@ -1,5 +1,5 @@
 <?php
-	test('gcd should return the greatest common denominator of two integers', testBasicGcd);
+	test('gcd should return the greatest common denominator of two integers', 'testBasicGcd');
 	function testBasicGcd() {
 		if(NumbersBasic::gcd(1254, 5298) != 6)
 			return false;

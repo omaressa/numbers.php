@@ -1,5 +1,5 @@
 <?php
-	test('randomSample should return an array of random numbers in a certain bound', testStatisticRandomSample);
+	test('randomSample should return an array of random numbers in a certain bound', 'testStatisticRandomSample');
 	function testStatisticRandomSample() {
 		$lower = 5;
 		$upper = 100;

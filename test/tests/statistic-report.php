@@ -1,5 +1,5 @@
 <?php
-	test('report should return a correct set of summary statistics', testStatisticReport);
+	test('report should return a correct set of summary statistics', 'testStatisticReport');
 	function testStatisticReport() {
 		$report = NumbersStatistic::report(array(-5, -4, -1, 0, 5, 100));
 		if(!NumbersBasic::numbersEqual($report['mean'], 15.833))

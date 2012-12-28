@@ -1,5 +1,5 @@
 <?php
-	test('should be able to raise a complex number to a given complex power', testComplexComplexPow);
+	test('compexPow should be able to raise a complex number to a given complex power', 'testComplexComplexPow');
 	function testComplexComplexPow() {
 		$a = new NumbersComplex(0, 1);
 		$b = new NumbersComplex(0, -1);

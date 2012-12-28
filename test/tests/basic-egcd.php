@@ -1,5 +1,5 @@
 <?php
-	test('egcd should return the array [a, x, y] which is the solved linear equation for GCD', testBasicEgcd);
+	test('egcd should return the array [a, x, y] which is the solved linear equation for GCD', 'testBasicEgcd');
 	function testBasicEgcd() {
 		if(NumbersBasic::egcd(65, 40) != array(5, -3, 5))
 			return false;

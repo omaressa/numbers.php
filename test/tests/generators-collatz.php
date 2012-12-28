@@ -1,5 +1,5 @@
 <?php
-	test('collatz should populate the given array with a collatz sequence', testGeneratorsCollatz);
+	test('collatz should populate the given array with a collatz sequence', 'testGeneratorsCollatz');
 	function testGeneratorsCollatz() {
 		$result = array();
 		NumbersGenerators::collatz(7, $result);

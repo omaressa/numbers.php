@@ -1,5 +1,5 @@
 <?php
-	test('powerMod should return the answer to a^b mod m', testBasicPowerMod);
+	test('powerMod should return the answer to a^b mod m', 'testBasicPowerMod');
 	function testBasicPowerMod() {
 		if(NumbersBasic::powerMod(1, -1, 5) != 1)
 			return false;

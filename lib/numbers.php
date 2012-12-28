@@ -16,6 +16,8 @@
 	 * limitations under the License.
 	 */
 	
+	// error_reporting(E_ALL);
+	
 	final class Numbers {
 		/** 
 		 * @constant {Number} EPSILON Epsilon (error bound) to be used 
@@ -28,7 +30,7 @@
 	require_once('numbers/calculus.php');
 	require_once('numbers/complex.php');
 	require_once('numbers/dsp.php');
-	// require_once('numbers/matrix.php');
+	require_once('numbers/matrix.php');
 	require_once('numbers/prime.php');
 	require_once('numbers/statistic.php');
 	require_once('numbers/generators.php');

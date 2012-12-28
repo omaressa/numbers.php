@@ -1,5 +1,5 @@
 <?php
-	test('should be able to check for equality of two complex numbers', testComplexEquals);
+	test('equals should be able to check for equality of two complex numbers', 'testComplexEquals');
 	function testComplexEquals() {
 		$a = new NumbersComplex(3, 4);
 		if(!$a->equals(new NumbersComplex(3, 4), Numbers::EPSILON))

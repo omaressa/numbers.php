@@ -1,5 +1,5 @@
 <?php
-	test('conjugate should return complex conjugate', testComplexConjugate);
+	test('conjugate should return complex conjugate', 'testComplexConjugate');
 	function testComplexConjugate() {
 		$a = new NumbersComplex(3, 4);
 		$b = $a->conjugate();

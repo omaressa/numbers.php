@@ -163,9 +163,9 @@
 			$arrayX = NumbersBasic::range(1, $arrayLength);
 			
 			$xSum = NumbersBasic::sum($arrayX);
-			$yLog = array_map(log, $arrayY);
+			$yLog = array_map('log', $arrayY);
 			$yLogSum = NumbersBasic::sum($yLog);
-			$xSquaredSum = NumbersBasic::sum(array_map(array(NumbersBasic, square), $arrayX));
+			$xSquaredSum = NumbersBasic::sum(array_map(array('NumbersBasic', 'square'), $arrayX));
 			$xyLogSum = NumbersBasic::sum(array_map(create_function('$x, $yLog', 'return $x * $yLog;'), $arrayX, $yLog));
 
 			$a = ($yLogSum * $xSquaredSum - $xSum * $xyLogSum) / ($arrayLength * $xSquaredSum - $xSum * $xSum);
@@ -196,7 +196,7 @@
 			$xSum = NumbersBasic::sum($arrayX);
 			$ySum = NumbersBasic::sum($arrayY);
 			$xySum = NumbersBasic::sum(array_map(create_function('$x, $y', 'return $x * $y;'), $arrayX, $arrayY));
-			$xSquaredSum = NumbersBasic::sum(array_map(array(NumbersBasic, square), $arrayX));
+			$xSquaredSum = NumbersBasic::sum(array_map(array('NumbersBasic', 'square'), $arrayX));
 			$xMean = self::mean($arrayX);
 			$yMean = self::mean($arrayY);
 			

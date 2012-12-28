@@ -1,5 +1,5 @@
 <?php
-	test('should be able to get the power of a complex number', testComplexPow);
+	test('pow should be able to get the power of a complex number', 'testComplexPow');
 	function testComplexPow() {
 		$a = new NumbersComplex(3, 4);
 		$imaginary = new NumbersComplex(0, 4);

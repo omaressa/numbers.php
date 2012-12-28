@@ -1,5 +1,5 @@
 <?php
-	test('numbersEqual should be able to check equality of two floating point numbers', testBasicNumbersEqual);
+	test('numbersEqual should be able to check equality of two floating point numbers', 'testBasicNumbersEqual');
 	function testBasicNumbersEqual() {
 		if(!NumbersBasic::numbersEqual(5, 5, Numbers::EPSILON))
 			return false;

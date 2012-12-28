@@ -1,5 +1,5 @@
 <?php
-	test('should be able to get all the roots of a complex number', testComplexRoots);
+	test('roots should be able to get all the roots of a complex number', 'testComplexRoots');
 	function testComplexRoots() {
 		$a = new NumbersComplex(3, -4);
 		$root = 5;

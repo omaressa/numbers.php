@@ -1,5 +1,5 @@
 <?php
-	test('isInt checks for an integer', testBasicIsInt);
+	test('isInt checks for an integer', 'testBasicIsInt');
 	function testBasicIsInt() {
 		if(NumbersBasic::isInt(2.32))
 			return false;

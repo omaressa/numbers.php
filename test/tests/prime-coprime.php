@@ -1,5 +1,5 @@
 <?php
-	test('coprime should determine if two integers are coprime or not', testPrimeCoprime);
+	test('coprime should determine if two integers are coprime or not', 'testPrimeCoprime');
 	function testPrimeCoprime() {
 		if(!NumbersPrime::coprime(3, 4))
 			return false;

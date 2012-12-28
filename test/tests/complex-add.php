@@ -1,5 +1,5 @@
 <?php
-	test('add should return the sum of two complex numbers', testComplexAdd);
+	test('add should return the sum of two complex numbers', 'testComplexAdd');
 	function testComplexAdd() {
 		$a = new NumbersComplex(3, 4);
 		$b = new NumbersComplex(5, 6);

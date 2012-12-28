@@ -1,5 +1,5 @@
 <?php
-	test('Stirling approximation gamma should return correct values', testCalculusStirlingGamma);
+	test('Stirling approximation gamma should return correct values', 'testCalculusStirlingGamma');
 	function testCalculusStirlingGamma() {
 		if(Numbers::EPSILON <= 5.69718714897717 - NumbersCalculus::stirlingGamma(0.1))
 			return false;

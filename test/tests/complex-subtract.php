@@ -1,5 +1,5 @@
 <?php
-	test('subtract should return the difference of two complex numbers', testComplexSubtract);
+	test('subtract should return the difference of two complex numbers', 'testComplexSubtract');
 	function testComplexSubtract() {
 		$a = new NumbersComplex(5, 8);
 		$b = new NumbersComplex(3, 4);

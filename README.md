@@ -7,7 +7,7 @@ Numbers.php provides a comprehensive set of mathematical tools that currently ar
 
 * Basic calculations
 * Calculus
-* <s>Matrix Operations</s> - coming soon
+* Matrix Operations
 * Prime Numbers
 * Statistics
 * More...
@@ -49,24 +49,25 @@ function myFunc(x) {
 NumbersCalculus::riemann(myFunc, -2, 4, 200);
 NumbersCalculus::adaptiveSimpson(myFunc, -2, 4, 0.0001);
 ```
-<!--
+
 Now say we wanted to run some matrix calculations:
 
 We can add two matrices
 
-```javascript
-var array1 = [0, 1, 2];
-var array2 = [3, 4, 5];
-
-numbers.matrix.addition(array1, array2);
+```php
+$matrix1 = array(array(0, 1, 2),
+				 array(3, 4, 5));
+$matrix2 = array(array( 6,  7,  8),
+				 array( 9, 10, 11));
+NumbersMatrix::addition($matrix1, $matrix2);
 ```
 
 We can transpose a matrix
 
-```javascript
-numbers.matrix.transpose(array);
+```php
+NumbersMatrix::transpose($array);
 ```
--->
+
 Numbers also includes some basic prime number analysis.  We can check if a number is prime:
 
 ```php

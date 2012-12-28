@@ -1,5 +1,5 @@
 <?php
-	test('exponentialRegression should return a function to calculate the exponential regression of an array of numbers', testStatisticExponentialRegression);
+	test('exponentialRegression should return a function to calculate the exponential regression of an array of numbers', 'testStatisticExponentialRegression');
 	function testStatisticExponentialRegression() {
 		$source = array(10, 9, 8, 8, 7, 7, 6, 6.5, 6.4, 6.3, 6.2);
 		$regressionValues = array(9.077131929916444, 8.66937771538526 , 8.279940244595563 , 7.907996710352883,
@@ -14,7 +14,7 @@
 			return false;
 		
 		$regressionFunctionValues = $regressionFunction(NumbersBasic::range(1, count($source)));
-		for($i = 0; $i < count($regression); ++$i)
+		for($i = 0; $i < count($regressionValues); ++$i)
 			if(!NumbersBasic::numbersEqual($regressionValues[$i], $regressionFunctionValues[$i]))
 				return false;
 		

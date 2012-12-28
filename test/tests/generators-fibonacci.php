@@ -1,5 +1,5 @@
 <?php
-	test('Should generate the nth fibonacci number', testGeneratorsFibonacci);
+	test('fibonacci should generate the nth fibonacci number', 'testGeneratorsFibonacci');
 	function testGeneratorsFibonacci() {
 		if(NumbersGenerators::fibonacci(10) != 55)
 			return false;

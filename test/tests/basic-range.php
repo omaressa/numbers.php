@@ -1,5 +1,5 @@
 <?php
-	test('range should return an appropriate range for the given start, stop, and step parameters', testBasicRange);
+	test('range should return an appropriate range for the given start, stop, and step parameters', 'testBasicRange');
 	function testBasicRange() {
 		if(NumbersBasic::range(1, 10) != array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
 			return false;
