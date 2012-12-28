@@ -31,23 +31,24 @@ Use riemann integrals (with 200 subdivisions)
 ```php
 require_once('lib/numbers.php');
 
-NumbersCalculus::riemann(sin, -2, 4, 200);
+NumbersCalculus::riemann('sin', -2, 4, 200);
 ```
 
 Or use adaptive simpson quadrature (with epsilon 0.0001)
 
 ```php
-NumbersCalculus::adaptiveSimpson(sin, -2, 4, 0.0001);
+NumbersCalculus::adaptiveSimpson('sin', -2, 4, 0.0001);
 ```
 
 User-defined functions can be used too:
 
 ```php
-function myFunc(x) {
-  return 2 * pow(x, 2) + 1;
+function myFunc($x) {
+  return 2 * pow($x, 2) + 1;
 }
-NumbersCalculus::riemann(myFunc, -2, 4, 200);
-NumbersCalculus::adaptiveSimpson(myFunc, -2, 4, 0.0001);
+NumbersCalculus::riemann('myFunc', -2, 4, 200);
+
+NumbersCalculus::adaptiveSimpson(create_function('$x', 'return 2 * pow($x, 2) + 1;'), -2, 4, 0.0001);
 ```
 
 Now say we wanted to run some matrix calculations:
