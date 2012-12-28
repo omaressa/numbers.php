@@ -1,5 +1,5 @@
 # Numbers.php
-[Numbers.php](https://github.com/powder96/numbers.php/) - an advanced mathematics toolkit for PHP. It is a port of [Numbers.js](https://github.com/sjkaliski/numbers.js/) - same toolkit for JavaScript.
+[Numbers.php](https://github.com/powder96/numbers.php/) - an advanced mathematics toolkit for PHP >= 5.2. It is a port of [Numbers.js](https://github.com/sjkaliski/numbers.js/) - same toolkit for JavaScript.
 
 ## Description
 

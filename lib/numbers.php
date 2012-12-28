@@ -16,7 +16,7 @@
 	 * limitations under the License.
 	 */
 	
-	error_reporting(E_ALL);
+	// error_reporting(E_ALL);
 	
 	final class Numbers {
 		/** 
@@ -26,11 +26,13 @@
 		const EPSILON = 0.001;
 	}
 	
-	require_once('numbers/basic.php');
-	require_once('numbers/calculus.php');
-	require_once('numbers/complex.php');
-	require_once('numbers/dsp.php');
-	require_once('numbers/matrix.php');
-	require_once('numbers/prime.php');
-	require_once('numbers/statistic.php');
-	require_once('numbers/generators.php');
+	define('NUMBERS_INCLUDE_PATH', realpath(dirname(__FILE__) . '/numbers'));
+	
+	require_once(NUMBERS_INCLUDE_PATH . '/basic.php');
+	require_once(NUMBERS_INCLUDE_PATH . '/calculus.php');
+	require_once(NUMBERS_INCLUDE_PATH . '/complex.php');
+	require_once(NUMBERS_INCLUDE_PATH . '/dsp.php');
+	require_once(NUMBERS_INCLUDE_PATH . '/matrix.php');
+	require_once(NUMBERS_INCLUDE_PATH . '/prime.php');
+	require_once(NUMBERS_INCLUDE_PATH . '/statistic.php');
+	require_once(NUMBERS_INCLUDE_PATH . '/generators.php');
