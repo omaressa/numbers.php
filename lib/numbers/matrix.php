@@ -196,21 +196,17 @@
 			$lu = $matrix;
 			$p = self::transpose(self::identity($size));
 			for($x = 0; $x < $size; ++$x) {
-				$currentColumn = array();
-				for($y = 0; $y < $size; ++$y)
-					$currentColumn[$y] = $lu[$y][$x];
 				for($y = 0; $y < $size; ++$y) {
-					$currentRow = $lu[$y];
 					$minIndex = min($x, $y);
 					$s = 0;
 					for($k = 0; $k < $minIndex; ++$k)
-						$s += $currentRow[$k] * $currentColumn[$k];
-					$currentRow[$x] = $currentColumn[$y] -= $s;
+						$s += $lu[$y][$k] * $lu[$k][$x];
+					$lu[$y][$x] -= $s;
 				}
 				// find pivot
 				$pivot = $x;
 				for($y = $x + 1; $y < $size; ++$y)
-					if(abs($currentColumn[$y]) > abs($currentColumn[$pivot]))
+					if(abs($lu[$y][$x]) > abs($lu[$pivot][$x]))
 						$pivot = $y;
 				if($pivot != $x) {
 					$lu = self::rowSwitch($lu, $pivot, $x);

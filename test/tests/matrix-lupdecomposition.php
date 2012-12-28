@@ -23,7 +23,7 @@
 		$lupA = NumbersMatrix::lupDecomposition($a);
 		if(NumbersMatrix::multiply($lupA[0], $lupA[1]) != NumbersMatrix::multiply($lupA[2], $a))
 			return false;
-		$lupB = NumbersMatrix::lupDecomposition($a);
+		$lupB = NumbersMatrix::lupDecomposition($b);
 		if(NumbersMatrix::multiply($lupB[0], $lupB[1]) != NumbersMatrix::multiply($lupB[2], $b))
 			return false;
 		return true;
