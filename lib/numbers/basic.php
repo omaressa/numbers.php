@@ -38,7 +38,7 @@
 		/**
 		 * Subtracts elements from one another in array.
 		 *
-		 * e.g [5,3,1,-1] -> (-1) - 1 - 3 - 5 = -10
+		 * e.g [5,3,1,-1] -> 5 - 3 - 1 - (-1) = 2
 		 *
 		 * @param {Array} collection of numbers.
 		 * @return {Number} difference.
@@ -46,8 +46,10 @@
 		public static function subtraction($array) {
 			if(!is_array($array))
 				throw new Exception('Input must be of type Array');
-			$total = $array[count($array) - 1];
-			for($i = count($array) - 2; $i >= 0; --$i) {
+			if(!is_numeric($array[0]))
+				throw new Exception('All elements in array must be numbers');
+			$total = $array[0];
+			for($i = 1, $arrayLength = count($array); $i < $arrayLength; ++$i) {
 				if(!is_numeric($array[$i]))
 					throw new Exception('All elements in array must be numbers');
 				$total -= $array[$i];

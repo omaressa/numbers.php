@@ -1,7 +1,7 @@
 <?php
 	test('subtraction should return the difference of items in an array', testBasicSubtraction01);
 	function testBasicSubtraction01() {
-		if(NumbersBasic::subtraction(array(0, 1, 2, 3)) != 0)
+		if(NumbersBasic::subtraction(array(5, 3, 1, -1)) != 2)
 			return false;
 		return true;
 	}
