@@ -1,16 +1,14 @@
 <?php
 	test('random should return a specified quantity of elements from an array, at random', 'testBasicRandom01');
 	function testBasicRandom01() {
-		mt_srand(0);
-		if(NumbersBasic::random(array(10, 20, 30, 40, 50, 60, 70), 5, true) != array(40, 50, 60, 20, 50))
+		if(count(NumbersBasic::random(array(10, 20, 30, 40, 50, 60, 70), 5, true)) != 5)
 			return false;
 		return true;
 	}
 	
 	test('random should return a specified quantity of elements from an array, at random w/o duplicates', 'testBasicRandom02');
 	function testBasicRandom02() {
-		mt_srand(0);
-		if(NumbersBasic::random(array(10, 20, 30, 40, 50, 60, 70), 5, false) != array(50, 30, 20, 10, 60))
+		if(count(NumbersBasic::random(array(10, 20, 30, 40, 50, 60, 70), 5, false)) != 5)
 			return false;
 		return true;
 	}

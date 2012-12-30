@@ -163,16 +163,17 @@
 			if(empty($array))
 				throw new Exception('Empty array');
 			$arrayLength = count($array);
-			if($quantity > $arrayLength && !$allowDuplicates)
-				throw new Exception('Quantity requested exceeds size of array');
 			if($allowDuplicates) {
 				$result = array();
 				for($i = 0; $i < $quantity; ++$i)
 					$result[$i] = $array[mt_rand(0, $arrayLength - 1)];
 				return $result;
 			}
-			else
+			else {
+				if($quantity > $arrayLength)
+					throw new Exception('Quantity requested exceeds size of array');
 				return array_slice(self::shuffle($array), 0, $quantity);
+			}
 		}
 		
 		/**
@@ -182,12 +183,7 @@
 		 * @return {Array} shuffled array.
 		 */
 		public static function shuffle($array) {
-			for($i = count($array) - 1; $i >= 0; --$i) {
-				$j = mt_rand(0, $i);
-				$t = $array[$i];
-				$array[$i] = $array[$j];
-				$array[$j] = $t;
-			}
+			shuffle($array);
 			return $array;
 		}
 		
