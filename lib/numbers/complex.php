@@ -20,11 +20,21 @@
 		public $real;
 		public $imaginary;
 		
+		/**
+		 * Create a complex number.
+		 * @param float $real
+		 * @param float $imaginary
+		 * @return Complex
+		 */
 		public function __construct($real, $imaginary) {
 			$this->real = $real;
 			$this->imaginary = $imaginary;
 		}
 		
+		/**
+		 * Convert complex number to string.
+		 * @return string
+		 */
 		public function __toString() {
 			return 'Complex(' . $this->real . ', ' . $this->imaginary . ')';
 		}

@@ -52,8 +52,7 @@
 				$x = 2;
 				if(fmod($number, $x) != 0) {
 					$x = 3;
-					while((fmod($number, $x) != 0) && (($x += 2) < $sqrt)) {
-					}
+					while((fmod($number, $x) != 0) && (($x += 2) < $sqrt));
 				}
 				$x = ($sqrt < $x) ? $number : $x;
 				$factors[] = $x;
