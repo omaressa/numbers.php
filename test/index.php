@@ -1,106 +1,140 @@
-<?php
-	require_once('../lib/numbers.php');
-	
-	function test($title, $testFunction) {
-		if($testFunction())
-			echo $title . ': OK<br />';
-		else
-			echo '<strong style="color: red;">' . $title . ': FAILED</strong><br />';
-	}
-	
-	echo '<h1>Testing Numbers.php library</h1>';
-	
-	echo '<h2>Testing Standard Mathematics</h2>';
-	require('tests/basic-sum.php');
-	require('tests/basic-subtraction.php');
-	require('tests/basic-product.php');
-	require('tests/basic-square.php');
-	require('tests/basic-binomial.php');
-	require('tests/basic-factorial.php');
-	require('tests/basic-gcd.php');
-	require('tests/basic-lcm.php');
-	require('tests/basic-random.php');
-	require('tests/basic-shuffle.php');
-	require('tests/basic-max.php');
-	require('tests/basic-min.php');
-	require('tests/basic-range.php');
-	require('tests/basic-isint.php');
-	require('tests/basic-divmod.php');
-	require('tests/basic-powermod.php');
-	require('tests/basic-egcd.php');
-	require('tests/basic-modinverse.php');
-	require('tests/basic-numbersequal.php');
-	
-	echo '<h2>Testing Calculus Mathematics</h2>';
-	require('tests/calculus-pointdiff.php');
-	require('tests/calculus-riemann.php');
-	require('tests/calculus-adaptivesimpson.php');
-	require('tests/calculus-limit.php');
-	require('tests/calculus-stirlinggamma.php');
-	require('tests/calculus-lanczosgamma.php');
-	
-	echo '<h2>Testing Complex Numbers</h2>';
-	require('tests/complex-add.php');
-	require('tests/complex-subtract.php');
-	require('tests/complex-multiply.php');
-	require('tests/complex-divide.php');
-	require('tests/complex-magnitude.php');
-	require('tests/complex-phase.php');
-	require('tests/complex-conjugate.php');
-	require('tests/complex-pow.php');
-	require('tests/complex-complexpow.php');
-	require('tests/complex-roots.php');
-	require('tests/complex-sin.php');
-	require('tests/complex-cos.php');
-	require('tests/complex-tan.php');
-	require('tests/complex-equals.php');
-	
-	echo '<h2>Testing DSP Tools</h2>';
-	require('tests/dsp-segment.php');
-	require('tests/dsp-fft.php');
-	
-	echo '<h2>Testing Matrix Mathematics</h2>';
-	require('tests/matrix-deepcopy.php');
-	require('tests/matrix-issquare.php');
-	require('tests/matrix-addition.php');
-	require('tests/matrix-scalar.php');
-	require('tests/matrix-transpose.php');
-	require('tests/matrix-identity.php');
-	require('tests/matrix-dotproduct.php');
-	require('tests/matrix-multiply.php');
-	require('tests/matrix-determinant.php');
-	require('tests/matrix-lupdecomposition.php');
-	require('tests/matrix-rotate.php');
-	require('tests/matrix-scale.php');
-	require('tests/matrix-shear.php');
-	require('tests/matrix-affine.php');
-	require('tests/matrix-rowscale.php');
-	require('tests/matrix-rowswitch.php');
-	require('tests/matrix-rowaddmultiple.php');
-	
-	echo '<h2>Testing Prime Number Mathematics</h2>';
-	require('tests/prime-simple.php');
-	require('tests/prime-factorization.php');
-	require('tests/prime-millerrabin.php');
-	require('tests/prime-sieve.php');
-	require('tests/prime-coprime.php');
-	require('tests/prime-getperfectpower.php');
-	require('tests/prime-getprimepower.php');
-	
-	echo '<h2>Testing Statistics Mathematics</h2>';
-	require('tests/statistic-mean.php');
-	require('tests/statistic-median.php');
-	require('tests/statistic-mode.php');
-	require('tests/statistic-quantile.php');
-	require('tests/statistic-report.php');
-	require('tests/statistic-randomsample.php');
-	require('tests/statistic-standarddev.php');
-	require('tests/statistic-correlation.php');
-	require('tests/statistic-rsquared.php');
-	require('tests/statistic-exponentialregression.php');
-	require('tests/statistic-linearregression.php');
-	require('tests/statistic-covariance.php');
-	
-	echo '<h2>Testing Generators</h2>';
-	require('tests/generators-fibonacci.php');
-	require('tests/generators-collatz.php');
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="https://raw.github.com/twitter/bootstrap/070c125ceceb2a164773f51226950350445160ee/docs/assets/css/bootstrap.css" />
+	</head>
+	<body>
+		<div class="container">
+			<h1>Testing Numbers.php library</h1>
+			<hr />
+			<?php
+				require_once('../lib/numbers.php');
+				
+				$testGroups[] = array(
+					'Testing Standard Mathematics',
+					'basic-sum',
+					'basic-subtraction',
+					'basic-product',
+					'basic-square',
+					'basic-binomial',
+					'basic-factorial',
+					'basic-gcd',
+					'basic-lcm',
+					'basic-random',
+					'basic-shuffle',
+					'basic-max',
+					'basic-min',
+					'basic-range',
+					'basic-isint',
+					'basic-divmod',
+					'basic-powermod',
+					'basic-egcd',
+					'basic-modinverse',
+					'basic-numbersequal'
+				);
+				
+				$testGroups[] = array(
+					'Testing Calculus Mathematics',
+					'calculus-pointdiff',
+					'calculus-riemann',
+					'calculus-adaptivesimpson',
+					'calculus-limit',
+					'calculus-stirlinggamma',
+					'calculus-lanczosgamma'
+				);
+				
+				$testGroups[] = array(
+					'Testing Complex Numbers',
+					'complex-add',
+					'complex-subtract',
+					'complex-multiply',
+					'complex-divide',
+					'complex-magnitude',
+					'complex-phase',
+					'complex-conjugate',
+					'complex-pow',
+					'complex-complexpow',
+					'complex-roots',
+					'complex-sin',
+					'complex-cos',
+					'complex-tan',
+					'complex-equals'
+				);
+				
+				$testGroups[] = array(
+					'Testing DSP Tools',
+					'dsp-segment',
+					'dsp-fft'
+				);
+				
+				$testGroups[] = array(
+					'Testing Matrix Mathematics',
+					'matrix-deepcopy',
+					'matrix-issquare',
+					'matrix-addition',
+					'matrix-scalar',
+					'matrix-transpose',
+					'matrix-identity',
+					'matrix-dotproduct',
+					'matrix-multiply',
+					'matrix-determinant',
+					'matrix-lupdecomposition',
+					'matrix-rotate',
+					'matrix-scale',
+					'matrix-shear',
+					'matrix-affine',
+					'matrix-rowscale',
+					'matrix-rowswitch',
+					'matrix-rowaddmultiple'
+				);
+				
+				$testGroups[] = array(
+					'Testing Prime Number Mathematics',
+					'prime-simple',
+					'prime-factorization',
+					'prime-millerrabin',
+					'prime-sieve',
+					'prime-coprime',
+					'prime-getperfectpower',
+					'prime-getprimepower'
+				);
+				
+				$testGroups[] = array(
+					'Testing Statistics Mathematics',
+					'statistic-mean',
+					'statistic-median',
+					'statistic-mode',
+					'statistic-quantile',
+					'statistic-report',
+					'statistic-randomsample',
+					'statistic-standarddev',
+					'statistic-correlation',
+					'statistic-rsquared',
+					'statistic-exponentialregression',
+					'statistic-linearregression',
+					'statistic-covariance'
+				);
+				
+				$testGroups[] = array(
+					'Testing Generators',
+					'generators-fibonacci',
+					'generators-collatz'
+				);
+				
+				foreach($testGroups as $testGroup) {
+					echo '<h2>' . $testGroup[0] . '</h2>';
+					for($i = 1; $i < count($testGroup); ++$i)
+						require('tests/' . $testGroup[$i] . '.php');
+					echo '<br />';
+				}
+				
+				function test($title, $testFunction) {
+					if($testFunction())
+						echo '<span class="label label-success">OK</span>';
+					else
+						echo '<span class="label label-important">FAIL</span>';
+					echo ' ' . $title . '<br />';
+				}
+			?>
+		</div>
+	</body>
+</html>
