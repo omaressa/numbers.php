@@ -340,4 +340,25 @@
 			$delta = $first - $second;
 			return $delta < $epsilon && $delta > -$epsilon;
 		}
+		
+		/**
+		 * Calculate the falling factorial of a number
+		 *
+		 * {@see http://mathworld.wolfram.com/FallingFactorial.html}
+		 *
+		 * @param {Number} Base
+		 * @param {Number} Steps to fall
+		 * @returns {Number} Result
+		 */
+		public static function fallingFactorial($n, $k) {
+			$i = ($n - $k + 1);
+			$r = 1;
+			if($n < 0)
+				throw new Exception('n cannot be negative');
+			if($k > $n)
+				return 0;
+			while($i <= $n)
+				$r *= $i++;
+			return $r;
+		}
 	}

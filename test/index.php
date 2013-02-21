@@ -9,121 +9,20 @@
 			<?php
 				require_once('../lib/numbers.php');
 				
-				$testGroups[] = array(
-					'Testing Standard Mathematics',
-					'basic-sum',
-					'basic-subtraction',
-					'basic-product',
-					'basic-square',
-					'basic-binomial',
-					'basic-factorial',
-					'basic-gcd',
-					'basic-lcm',
-					'basic-random',
-					'basic-shuffle',
-					'basic-max',
-					'basic-min',
-					'basic-range',
-					'basic-isint',
-					'basic-divmod',
-					'basic-powermod',
-					'basic-egcd',
-					'basic-modinverse',
-					'basic-numbersequal'
-				);
-				
-				$testGroups[] = array(
-					'Testing Calculus Mathematics',
-					'calculus-pointdiff',
-					'calculus-riemann',
-					'calculus-adaptivesimpson',
-					'calculus-limit',
-					'calculus-stirlinggamma',
-					'calculus-lanczosgamma'
-				);
-				
-				$testGroups[] = array(
-					'Testing Complex Numbers',
-					'complex-add',
-					'complex-subtract',
-					'complex-multiply',
-					'complex-divide',
-					'complex-magnitude',
-					'complex-phase',
-					'complex-conjugate',
-					'complex-pow',
-					'complex-complexpow',
-					'complex-roots',
-					'complex-sin',
-					'complex-cos',
-					'complex-tan',
-					'complex-equals'
-				);
-				
-				$testGroups[] = array(
-					'Testing DSP Tools',
-					'dsp-segment',
-					'dsp-fft'
-				);
-				
-				$testGroups[] = array(
-					'Testing Matrix Mathematics',
-					'matrix-deepcopy',
-					'matrix-issquare',
-					'matrix-addition',
-					'matrix-scalar',
-					'matrix-transpose',
-					'matrix-identity',
-					'matrix-dotproduct',
-					'matrix-multiply',
-					'matrix-determinant',
-					'matrix-lupdecomposition',
-					'matrix-rotate',
-					'matrix-scale',
-					'matrix-shear',
-					'matrix-affine',
-					'matrix-rowscale',
-					'matrix-rowswitch',
-					'matrix-rowaddmultiple'
-				);
-				
-				$testGroups[] = array(
-					'Testing Prime Number Mathematics',
-					'prime-simple',
-					'prime-factorization',
-					'prime-millerrabin',
-					'prime-sieve',
-					'prime-coprime',
-					'prime-getperfectpower',
-					'prime-getprimepower'
-				);
-				
-				$testGroups[] = array(
-					'Testing Statistics Mathematics',
-					'statistic-mean',
-					'statistic-median',
-					'statistic-mode',
-					'statistic-quantile',
-					'statistic-report',
-					'statistic-randomsample',
-					'statistic-standarddev',
-					'statistic-correlation',
-					'statistic-rsquared',
-					'statistic-exponentialregression',
-					'statistic-linearregression',
-					'statistic-covariance'
-				);
-				
-				$testGroups[] = array(
-					'Testing Generators',
-					'generators-fibonacci',
-					'generators-collatz'
-				);
-				
-				foreach($testGroups as $testGroup) {
-					echo '<h2>' . $testGroup[0] . '</h2>';
-					for($i = 1; $i < count($testGroup); ++$i)
-						require('tests/' . $testGroup[$i] . '.php');
+				$testGroups['basic'] = 'Testing Standard Mathematics';
+				$testGroups['calculus'] = 'Testing Calculus Mathematics';
+				$testGroups['complex'] = 'Testing Complex Numbers';
+				$testGroups['dsp'] = 'Testing DSP Tools';
+				$testGroups['matrix'] = 'Testing Matrix Mathematics';
+				$testGroups['prime'] = 'Testing Prime Number Mathematics';
+				$testGroups['statistic'] = 'Testing Statistics Mathematics';
+				$testGroups['generators'] = 'Testing Generators';
+
+				foreach($testGroups as $testGroupId => $testGroupTitle) {
+					echo '<h2>' . $testGroupTitle . '</h2>';
+					$testGroupFiles = glob(dirname(__FILE__) . '/tests/' . $testGroupId . '-*.php');
+					foreach($testGroupFiles as $testFile)
+						require($testFile);
 					echo '<br />';
 				}
 				
