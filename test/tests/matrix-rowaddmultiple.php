@@ -7,5 +7,5 @@
 		$b = array(array(0, 1, 2),
 				   array(3, 1, 9),
 				   array(1, 2, 5));
-		return NumbersMatrix::rowAddMultiple($a, 0, 1, 2) == $b;
+		return NumbersPHP\Matrix::rowAddMultiple($a, 0, 1, 2) == $b;
 	}

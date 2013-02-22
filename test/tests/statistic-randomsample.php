@@ -4,7 +4,7 @@
 		$lower = 5;
 		$upper = 100;
 		$samples = 5;
-		$result = NumbersStatistic::randomSample($lower, $upper, $samples);
+		$result = NumbersPHP\Statistic::randomSample($lower, $upper, $samples);
 		if(count($result) != $samples)
 			return false;
 		foreach($result as $number)

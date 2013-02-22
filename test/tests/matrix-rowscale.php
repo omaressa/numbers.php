@@ -10,11 +10,11 @@
 		$c = array(array(  0,   1,   2),
 				   array( -6,   2, -10),
 				   array(  1,   2,   5));
-		if(NumbersMatrix::rowScale($a, 0, 0) != $b)
+		if(NumbersPHP\Matrix::rowScale($a, 0, 0) != $b)
 			return false;
-		if(NumbersMatrix::rowScale($a, 1, -2) != $c)
+		if(NumbersPHP\Matrix::rowScale($a, 1, -2) != $c)
 			return false;
-		if(NumbersMatrix::rowScale($a, 1, 1) != $a)
+		if(NumbersPHP\Matrix::rowScale($a, 1, 1) != $a)
 			return false;
 		return true;
 	}

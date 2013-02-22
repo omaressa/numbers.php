@@ -7,5 +7,5 @@
 				   array( 9, 10, 11));
 		$c = array(array( 6,  8, 10),
 				   array(12, 14, 16));
-		return NumbersMatrix::addition($a, $b) == $c;
+		return NumbersPHP\Matrix::addition($a, $b) == $c;
 	}

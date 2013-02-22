@@ -4,10 +4,10 @@
 		$primes = array(2, 17, 839, 3733, 999983);
 		$composites = array(1, 4, 18, 25, 838, 3007);
 		foreach($primes as $prime)
-			if(!NumbersPrime::millerRabin($prime))
+			if(!NumbersPHP\Prime::millerRabin($prime))
 				return false;
 		foreach($composites as $composite)
-			if(NumbersPrime::millerRabin($composite))
+			if(NumbersPHP\Prime::millerRabin($composite))
 				return false;
 		return true;
 	}

@@ -1,8 +1,8 @@
 <?php
 	test('divide should return the product of two complex numbers', 'testComplexDivide');
 	function testComplexDivide() {
-		$a = new NumbersComplex(10, 0);
-		$b = new NumbersComplex(0, 10);
+		$a = new NumbersPHP\Complex(10, 0);
+		$b = new NumbersPHP\Complex(0, 10);
 		$result = $a->divide($b);
 		if($result->real != 0)
 			return false;

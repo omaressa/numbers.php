@@ -1,7 +1,7 @@
 <?php
 	test('conjugate should return complex conjugate', 'testComplexConjugate');
 	function testComplexConjugate() {
-		$a = new NumbersComplex(3, 4);
+		$a = new NumbersPHP\Complex(3, 4);
 		$b = $a->conjugate();
 		if($b->real != 3)
 			return false;

@@ -1,5 +1,5 @@
 # Numbers.php
-[Numbers.php](https://github.com/powder96/numbers.php/) - an advanced mathematics toolkit for PHP >= 5.2. It is a port of [Numbers.js](https://github.com/sjkaliski/numbers.js/) - same toolkit for JavaScript.
+[Numbers.php](https://github.com/powder96/numbers.php/) - an advanced mathematics toolkit for PHP >= 5.3. It is a port of [Numbers.js](https://github.com/sjkaliski/numbers.js/) - same toolkit for JavaScript.
 
 ## Description
 
@@ -20,24 +20,22 @@ The primary uses cases are calculations and data analysis on the server side. Fo
 
 Numbers is pretty straightforward to use.
 
-Simply require it:
-```php
-require_once('lib/numbers.php');
-```
-
 For example, if we wanted to estimate the integral of sin(x) from -2 to 4, we could:
 
 Use riemann integrals (with 200 subdivisions)
 ```php
-require_once('lib/numbers.php');
+use NumbersPHP\Calculus;
+use NumbersPHP\Matrix;
+use NumbersPHP\Statistic;
+use NumbersPHP\Prime;
 
-NumbersCalculus::riemann('sin', -2, 4, 200);
+Calculus::riemann('sin', -2, 4, 200);
 ```
 
 Or use adaptive simpson quadrature (with epsilon 0.0001)
 
 ```php
-NumbersCalculus::adaptiveSimpson('sin', -2, 4, 0.0001);
+Calculus::adaptiveSimpson('sin', -2, 4, 0.0001);
 ```
 
 User-defined functions can be used too:
@@ -46,9 +44,9 @@ User-defined functions can be used too:
 function myFunc($x) {
   return 2 * pow($x, 2) + 1;
 }
-NumbersCalculus::riemann('myFunc', -2, 4, 200);
+Calculus::riemann('myFunc', -2, 4, 200);
 
-NumbersCalculus::adaptiveSimpson(create_function('$x', 'return 2 * pow($x, 2) + 1;'), -2, 4, 0.0001);
+Calculus::adaptiveSimpson(create_function('$x', 'return 2 * pow($x, 2) + 1;'), -2, 4, 0.0001);
 ```
 
 Now say we wanted to run some matrix calculations:
@@ -60,34 +58,34 @@ $matrix1 = array(array(0, 1, 2),
 				 array(3, 4, 5));
 $matrix2 = array(array( 6,  7,  8),
 				 array( 9, 10, 11));
-NumbersMatrix::addition($matrix1, $matrix2);
+Matrix::addition($matrix1, $matrix2);
 ```
 
 We can transpose a matrix
 
 ```php
-NumbersMatrix::transpose($array);
+Matrix::transpose($array);
 ```
 
 Numbers also includes some basic prime number analysis.  We can check if a number is prime:
 
 ```php
 //basic check
-NumbersPrime::simple($number);
+Prime::simple($number);
 
-// Miller–Rabin primality test
-NumbersPrime::millerRabin($number);
+// Millerï¿½Rabin primality test
+Prime::millerRabin($number);
 ```
 
 The statistics tools include mean, median, mode, standard deviation, random sample generator, correlation, confidence intervals, t-test, chi-square, and more.
 
 ```php
-NumbersStatistic::mean($array);
-NumbersStatistic::median($array);
-NumbersStatistic::mode($array);
-NumbersStatistic::standardDev($array);
-NumbersStatistic::randomSample($lower, $upper, $n);
-NumbersStatistic::correlation($array1, $array2);
+Statistic::mean($array);
+Statistic::median($array);
+Statistic::mode($array);
+Statistic::standardDev($array);
+Statistic::randomSample($lower, $upper, $n);
+Statistic::correlation($array1, $array2);
 ```
 
 ## Test

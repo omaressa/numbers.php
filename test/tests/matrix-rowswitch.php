@@ -7,5 +7,5 @@
 		$b = array(array( 3, -1,  5),
 				   array( 0,  1,  2),
 				   array( 1,  2,  5));
-		return NumbersMatrix::rowSwitch($a, 0, 1) == $b;
+		return NumbersPHP\Matrix::rowSwitch($a, 0, 1) == $b;
 	}

@@ -8,7 +8,7 @@
 				   array(2, 5));
 		$c = array(array( 5, 14),
 				   array(14, 50));
-		return NumbersMatrix::multiply($a, $b) == $c;
+		return NumbersPHP\Matrix::multiply($a, $b) == $c;
 	}
 	
 	test('multiply should return product of matrix and a vector', 'testMatrixMultiply02');
@@ -20,5 +20,5 @@
 				   array(2));
 		$c = array(array( 5),
 				   array(14));
-		return NumbersMatrix::multiply($a, $b) == $c;
+		return NumbersPHP\Matrix::multiply($a, $b) == $c;
 	}

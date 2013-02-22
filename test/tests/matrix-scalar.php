@@ -6,5 +6,5 @@
 		$b = 5;
 		$c = array(array( 0,  5, 10),
 				   array(15, 20, 25));
-		return NumbersMatrix::scalar($a, $b) == $c;
+		return NumbersPHP\Matrix::scalar($a, $b) == $c;
 	}
