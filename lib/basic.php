@@ -44,8 +44,9 @@ final class NumbersBasic
      *
      * e.g [5,3,1,-1] -> 5 - 3 - 1 - (-1) = 2
      *
-     * @param array $array of numbers.
-     * @return {Number} difference.
+     * @param $array array $array of numbers.
+     * @return mixed difference
+     * @throws \Exception
      */
     public static function subtraction($array)
     {
@@ -65,8 +66,9 @@ final class NumbersBasic
     /**
      * Product of all elements in an array.
      *
-     * @param array collection of numbers.
-     * @return {Number} product.
+     * @param $array of numbers
+     * @return int product
+     * @throws \Exception
      */
     public static function product($array)
     {
@@ -84,8 +86,8 @@ final class NumbersBasic
     /**
      * Return the square of any value.
      *
-     * @param {Number} number
-     * @return {Number} square of number
+     * @param $number number
+     * @return mixed square of number
      */
     public static function square($number)
     {
@@ -95,9 +97,9 @@ final class NumbersBasic
     /**
      * Calculate the binomial coefficient (n choose k)
      *
-     * @param {Number} available choices
-     * @param {Number} number chosen
-     * @return {Number} number of possible choices
+     * @param $n    available choices
+     * @param $k    number chosen
+     * @return int  number of possible choices
      */
     public static function binomial($n, $k)
     {
@@ -121,8 +123,8 @@ final class NumbersBasic
     /**
      * Factorial for some integer.
      *
-     * @param {Number} integer.
-     * @return {Number} result.
+     * @param $number integer
+     * @return int result
      */
     public static function factorial($number)
     {
@@ -136,9 +138,9 @@ final class NumbersBasic
      * Calculate the greastest common divisor amongst two integers.
      * Taken from Ratio.js https://github.com/LarryBattle/Ratio.js
      *
-     * @param {Number} number A.
-     * @param {Number} number B.
-     * @return {Number} greatest common divisor for integers A, B.
+     * @param $a number A.
+     * @param $b  number B.
+     * @return number greatest common divisor for integers A, B.
      */
     public static function gcd($a, $b)
     {
@@ -155,9 +157,9 @@ final class NumbersBasic
     /**
      * Calculate the least common multiple amongst two integers.
      *
-     * @param {Number} number A.
-     * @param {Number} number B.
-     * @return {Number} least common multiple for integers A, B.
+     * @param $a number A.
+     * @param $b number B.
+     * @return float least common multiple for integers A, B.
      */
     public static function lcm($a, $b)
     {
