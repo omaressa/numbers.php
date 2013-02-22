@@ -30,26 +30,31 @@ class CalculusTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers NumbersPHP\Calculus::pointDiff
-     * @todo   Implement testPointDiff().
      */
     public function testPointDiff()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+        $testCalculusPointDiffTestFunc = function ($x) {
+            return 2 * $x + 2;
+        };
+        $this->assertTrue(
+            2 - \NumbersPHP\Calculus::pointDiff($testCalculusPointDiffTestFunc, 5) < \NumbersPHP\Numbers::EPSILON
         );
     }
 
     /**
      * @covers NumbersPHP\Calculus::riemann
-     * @todo   Implement testRiemann().
      */
     public function testRiemann()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+        $testCalculusRiemannTestFunc = function ($x) {
+            return 2 * $x * $x;
+        };
+
+        $this->assertEquals(
+            570000,
+            \NumbersPHP\Calculus::riemann($testCalculusRiemannTestFunc, 0, 100, 10)
         );
+
     }
 
     /**
@@ -78,49 +83,62 @@ class CalculusTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers NumbersPHP\Calculus::adaptiveSimpson
-     * @todo   Implement testAdaptiveSimpson().
      */
     public function testAdaptiveSimpson()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+        $testCalculusAdaptiveSimpsonTestFunc = function ($x) {
+            return 2 * $x * $x;
+        };
+
+        $this->assertEquals(
+            666666.666667,
+            \NumbersPHP\Calculus::adaptiveSimpson($testCalculusAdaptiveSimpsonTestFunc, 0, 100),
+            'adaptive simpson should return an estimated definite integral of a function'
         );
+
     }
 
     /**
      * @covers NumbersPHP\Calculus::limit
-     * @todo   Implement testLimit().
      */
     public function testLimit()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+        $testCalculusLimitTestFunc = function ($x) {
+            return $x * $x * sin(2 * $x);
+        };
+        $this->assertEquals(
+            91.2945250728,
+            \NumbersPHP\Calculus::limit($testCalculusLimitTestFunc, 10, 'middle')
         );
     }
 
     /**
      * @covers NumbersPHP\Calculus::stirlingGamma
-     * @todo   Implement testStirlingGamma().
      */
     public function testStirlingGamma()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+        $this->assertFalse(\NumbersPHP\Numbers::EPSILON <= 5.69718714897717 - \NumbersPHP\Calculus::stirlingGamma(0.1));
+        $this->assertFalse(\NumbersPHP\Numbers::EPSILON <= 3.3259984240223925 - \NumbersPHP\Calculus::stirlingGamma(0.2));
+        $this->assertFalse(\NumbersPHP\Numbers::EPSILON <= 2.3625300362696198 - \NumbersPHP\Calculus::stirlingGamma(0.3));
+        $this->assertFalse(\NumbersPHP\Numbers::EPSILON <= 0.8426782594483921 - \NumbersPHP\Calculus::stirlingGamma(1.3));
     }
 
     /**
      * @covers NumbersPHP\Calculus::lanczosGamma
-     * @todo   Implement testLanczosGamma().
      */
     public function testLanczosGamma()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+        $this->assertFalse(\NumbersPHP\Numbers::EPSILON <= 9.513507698668736 - \NumbersPHP\Calculus::lanczosGamma(0.1));
+
+        $this->assertFalse(\NumbersPHP\Numbers::EPSILON <= 4.590843711998803 - \NumbersPHP\Calculus::lanczosGamma(0.2));
+
+        $this->assertFalse(
+            \NumbersPHP\Numbers::EPSILON <= 2.9915689876875904 - \NumbersPHP\Calculus::lanczosGamma(0.3)
         );
+
+        $this->assertFalse(
+            \NumbersPHP\Numbers::EPSILON <= 0.8974706963062777 - \NumbersPHP\Calculus::lanczosGamma(1.3)
+        );
+
     }
 }
