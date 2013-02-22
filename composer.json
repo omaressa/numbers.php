@@ -1,0 +1,11 @@
+{
+    "require": {
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "NumbersPHP":        "lib/",
+            "NumbersPHP\\Tests": "test/"
+        }
+    }
+}
