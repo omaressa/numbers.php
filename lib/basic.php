@@ -22,8 +22,9 @@ final class NumbersBasic
     /**
      * Determine the summation of numbers in a given array.
      *
-     * @param {Array} collection of numbers.
-     * @return {Number} sum of numbers in array.
+     * @param $array array $array of numbers.
+     * @return int number sum of numbers in array.
+     * @throws \Exception
      */
     public static function sum($array)
     {
@@ -43,7 +44,7 @@ final class NumbersBasic
      *
      * e.g [5,3,1,-1] -> 5 - 3 - 1 - (-1) = 2
      *
-     * @param {Array} collection of numbers.
+     * @param array $array of numbers.
      * @return {Number} difference.
      */
     public static function subtraction($array)
@@ -64,7 +65,7 @@ final class NumbersBasic
     /**
      * Product of all elements in an array.
      *
-     * @param {Array} collection of numbers.
+     * @param array collection of numbers.
      * @return {Number} product.
      */
     public static function product($array)
@@ -166,7 +167,7 @@ final class NumbersBasic
     /**
      * Retrieve a specified quantity of elements from an array, at random.
      *
-     * @param {Array} set of values to select from.
+     * @param array set of values to select from.
      * @param {Number} quantity of elements to retrieve.
      * @param {Boolean} allow the same number to be returned twice.
      * @return {Array} random elements.
@@ -191,7 +192,7 @@ final class NumbersBasic
     /**
      * Shuffle an array, in place.
      *
-     * @param {Array} array to be shuffled.
+     * @param array array to be shuffled.
      * @return {Array} shuffled array.
      */
     public static function shuffle($array)
@@ -203,7 +204,7 @@ final class NumbersBasic
     /**
      * Find maximum value in an array.
      *
-     * @param {Array} array to be traversed.
+     * @param array array to be traversed.
      * @return {Number} maximum value in the array.
      */
     public static function max($array)
@@ -214,7 +215,7 @@ final class NumbersBasic
     /**
      * Find minimum value in an array.
      *
-     * @param {Array} array to be traversed.
+     * @param array array to be traversed.
      * @return {Number} minimum value in the array.
      */
     public static function min($array)

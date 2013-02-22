@@ -24,7 +24,7 @@ final class NumbersDSP
      * Returns an array composed of elements from arr, starting at index start
      * and counting by step.
      *
-     * @param {Array} Input array.
+     * @param array Input array.
      * @param {Number} Starting array index.
      * @param {Number} Step size.
      * @return {Array} Resulting sub-array.
@@ -42,7 +42,7 @@ final class NumbersDSP
      * of real valued time domain sequence array. (count($array) must be integer power of 2)
      * Inspired by http://rosettacode.org/wiki/Fast_Fourier_transform#Python
      *
-     * @param {Array} Real-valued series input, eg. time-series.
+     * @param array Real-valued series input, eg. time-series.
      * @return {Array} Array of complex numbers representing input signal in Fourier domain.
      */
     public static function fft($array)

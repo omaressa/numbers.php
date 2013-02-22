@@ -54,7 +54,7 @@ final class NumbersGenerators
      * Populate the given array with a Collatz Sequence.
      *
      * @param {Number} first number.
-     * @param {Array} arrary to be populated.
+     * @param array arrary to be populated.
      * @return {Array} array populated with Collatz sequence
      */
     public static function collatz($number, &$array)

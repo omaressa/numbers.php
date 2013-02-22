@@ -23,7 +23,7 @@ final class NumbersStatistic
     /**
      * Calculate the mean value of a set of numbers in array.
      *
-     * @param {Array} set of values.
+     * @param array set of values.
      * @return {Number} mean value.
      */
     public static function mean($array)
@@ -36,7 +36,7 @@ final class NumbersStatistic
     /**
      * Calculate the median value of a set of numbers in array.
      *
-     * @param {Array} set of values.
+     * @param array set of values.
      * @return {Number} median value.
      */
     public static function median($array)
@@ -47,7 +47,7 @@ final class NumbersStatistic
     /**
      * Calculate the mode value of a set of numbers in array.
      *
-     * @param {Array} set of values.
+     * @param array set of values.
      * @return {Number} mode value.
      */
     public static function mode($array)
@@ -70,7 +70,7 @@ final class NumbersStatistic
      * Ex: Median is 1st 2-quantile
      * Ex: Upper quartile is 3rd 4-quantile
      *
-     * @param {Array} set of values.
+     * @param array set of values.
      * @param {Number} index of quantile.
      * @param {Number} number of quantiles.
      * @return {Number} kth q-quantile of values.
@@ -125,7 +125,7 @@ final class NumbersStatistic
     /**
      * Evaluate the standard deviation for a set of values.
      *
-     * @param {Array} set of values.
+     * @param array set of values.
      * @return {Number} standard deviation.
      */
     public static function standardDev($array)
@@ -140,7 +140,7 @@ final class NumbersStatistic
     /**
      * Evaluate the correlation amongst a set of values.
      *
-     * @param {Array} set of values.
+     * @param array set of values.
      * @return {Number} correlation.
      */
     public static function correlation($array1, $array2)
@@ -153,8 +153,8 @@ final class NumbersStatistic
     /**
      * Calculate the Coefficient of Determination of a dataset and regression line.
      *
-     * @param {Array} Source data.
-     * @param {Array} Regression data.
+     * @param array Source data.
+     * @param array Regression data.
      * @return {Number} A number between 0 and 1.0 that represents how well the regression line fits the data.
      */
     public static function rSquared($source, $regression)
@@ -167,7 +167,7 @@ final class NumbersStatistic
     /**
      * Create a function to calculate the exponential regression of a dataset.
      *
-     * @param {Array} set of values.
+     * @param array set of values.
      * @return {Array} a function to accept X values and return corresponding regression Y values and a coefficient of determination
      */
     public static function exponentialRegression($arrayY)
@@ -200,8 +200,8 @@ final class NumbersStatistic
     /**
      * Create a function to calculate the linear regression of a dataset.
      *
-     * @param {Array} X array.
-     * @param {Array} Y array.
+     * @param array X array.
+     * @param array Y array.
      * @return {Function} A function which given X or array of X values will return Y.
      */
     public static function linearRegression($arrayX, $arrayY)
@@ -231,8 +231,8 @@ final class NumbersStatistic
     /**
      * Evaluate the covariance amongst 2 sets.
      *
-     * @param {Array} set 1 of values.
-     * @param {Array} set 2 of values.
+     * @param array set 1 of values.
+     * @param array set 2 of values.
      * @return {Number} covariance.
      */
     public static function covariance($array1, $array2)

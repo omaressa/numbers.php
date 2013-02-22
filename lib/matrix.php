@@ -23,7 +23,7 @@ final class NumbersMatrix
     /**
      * Return a deep copy of the input matrix.
      *
-     * @param {Array} matrix to copy.
+     * @param array matrix to copy.
      * @return {Array} copied matrix.
      */
     public static function deepCopy($matrix)
@@ -36,7 +36,7 @@ final class NumbersMatrix
     /**
      * Return true if matrix is square, false otherwise.
      *
-     * @param {Array} arr
+     * @param array arr
      */
     public static function isSquare($matrix)
     {
@@ -48,8 +48,8 @@ final class NumbersMatrix
     /**
      * Add two matrices together.  Matrices must be of same dimension.
      *
-     * @param {Array} matrix A.
-     * @param {Array} matrix B.
+     * @param array matrix A.
+     * @param array matrix B.
      * @return {Array} summed matrix.
      */
     public static function addition($a, $b)
@@ -66,7 +66,7 @@ final class NumbersMatrix
     /**
      * Scalar multiplication on an matrix.
      *
-     * @param {Array} matrix.
+     * @param array matrix.
      * @param {Number} scalar.
      * @return {Array} updated matrix.
      */
@@ -84,7 +84,7 @@ final class NumbersMatrix
     /**
      * Transpose a matrix.
      *
-     * @param {Array} matrix.
+     * @param array matrix.
      * @return {Array} transposed matrix.
      */
     public static function transpose($matrix)
@@ -116,8 +116,8 @@ final class NumbersMatrix
     /**
      * Evaluate dot product of two vectors.  Vectors must be of same length.
      *
-     * @param {Array} vector.
-     * @param {Array} vector.
+     * @param array vector.
+     * @param array vector.
      * @return {Array} dot product.
      */
     public static function dotproduct($a, $b)
@@ -136,8 +136,8 @@ final class NumbersMatrix
      * e.g. A x B = (m x n) x (n x m), where n, m are integers who define
      * the dimensions of matrices A, B.
      *
-     * @param {Array} matrix.
-     * @param {Array} matrix.
+     * @param array matrix.
+     * @param array matrix.
      * @return {Array} result of multiplied matrices.
      */
     public static function multiply($a, $b)
@@ -158,7 +158,7 @@ final class NumbersMatrix
      * Evaluate determinate of matrix.  Expect speed
      * degradation for matrices over 4x4.
      *
-     * @param {Array} matrix.
+     * @param array matrix.
      * @return {Number} determinant.
      */
     public static function determinant($matrix)
@@ -198,7 +198,7 @@ final class NumbersMatrix
      *
      * matrix.lupDecomposition(array) = [L, U, P]
      *
-     * @param {Array} arr
+     * @param array arr
      * @return {Array} array of matrices [L, U, P]
      */
     public static function lupDecomposition($matrix)
@@ -257,7 +257,7 @@ final class NumbersMatrix
     /**
      * Rotate a two dimensional vector by degree.
      *
-     * @param {Array} point.
+     * @param array point.
      * @param {Number} degree.
      * @param {String} direction - clockwise or counterclockwise.
      * @return {Array} vector.
@@ -276,7 +276,7 @@ final class NumbersMatrix
     /**
      * Scale a two dimensional vector by scale factor x and scale factor y.
      *
-     * @param {Array} point.
+     * @param array point.
      * @param {Number} sx.
      * @param {Number} sy.
      * @return {Array} vector.
@@ -293,7 +293,7 @@ final class NumbersMatrix
     /**
      * Shear a two dimensional vector by shear factor k.
      *
-     * @param {Array} point.
+     * @param array point.
      * @param {Number} k.
      * @param {String} direction - xaxis or yaxis.
      * @return {Array} vector.
@@ -310,7 +310,7 @@ final class NumbersMatrix
     /**
      * Perform an affine transformation on the given vector.
      *
-     * @param {Array} point.
+     * @param array point.
      * @param {Number} tx.
      * @param {Number} ty.
      * @return {Array} vector.
@@ -334,7 +334,7 @@ final class NumbersMatrix
      * Scales a row of a matrix by a factor and returns the updated matrix.
      * Used in row reduction functions.
      *
-     * @param {Array} matrix.
+     * @param array matrix.
      * @param {Number} row.
      * @param {Number} scale.
      */
@@ -357,7 +357,7 @@ final class NumbersMatrix
      * Swaps two rows of a matrix  and returns the updated matrix.
      * Used in row reduction functions.
      *
-     * @param {Array} matrix.
+     * @param array matrix.
      * @param {Number} row1.
      * @param {Number} row2.
      */
@@ -382,7 +382,7 @@ final class NumbersMatrix
      * in a matrix and returns the updated matrix.
      * Used in row reduction functions.
      *
-     * @param {Array} matrix.
+     * @param array matrix.
      * @param {Number} row1.
      * @param {Number} row2.
      */
