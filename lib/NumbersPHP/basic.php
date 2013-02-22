@@ -375,6 +375,7 @@ final class Basic
      * @param number $a Number a.
      * @param number $m Modulo m.
      * @return number if true, return number, else throw error.
+     * @throws \Exception
      */
     public static function modInverse($a, $m)
     {
