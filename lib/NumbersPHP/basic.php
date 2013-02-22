@@ -1,5 +1,7 @@
 <?php
+
 namespace NumbersPHP;
+
 /**
  * Numbers.php
  * http://github.com/powder96/numbers.php
