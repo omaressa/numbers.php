@@ -18,7 +18,7 @@ namespace NumbersPHP;
  * limitations under the License.
  */
 
-final class NumbersGenerators
+final class Generators
 {
     /**
      * Fast Fibonacci Implementation

@@ -18,7 +18,7 @@ namespace NumbersPHP;
  * limitations under the License.
  */
 
-final class NumbersStatistic
+final class Statistic
 {
     /**
      * Calculate the mean value of a set of numbers in array.

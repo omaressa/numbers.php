@@ -18,7 +18,7 @@ namespace NumbersPHP;
  * limitations under the License.
  */
 
-final class NumbersDSP
+final class DSP
 {
     /**
      * Returns an array composed of elements from arr, starting at index start
@@ -49,7 +49,7 @@ final class NumbersDSP
     {
         $arrayLength = count($array);
         if ($arrayLength <= 1)
-            return array(new NumbersComplex($array[0], 0));
+            return array(new Complex($array[0], 0));
         if (log($arrayLength) / M_LN2 % 1 !== 0)
             throw new Exception('Array length must be integer power of 2');
         $even = self::fft(self::segment($array, 0, 2));
@@ -58,7 +58,7 @@ final class NumbersDSP
         $halfLength = $arrayLength / 2;
         for ($k = 0; $k < $arrayLength; ++$k) {
             $phase = -2 * M_PI * $k / $arrayLength;
-            $phasor = new NumbersComplex(cos($phase), sin($phase));
+            $phasor = new Complex(cos($phase), sin($phase));
             if ($k < $halfLength)
                 $result[$k] = $even[$k]->add($phasor->multiply($odd[$k]));
             else

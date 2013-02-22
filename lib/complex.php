@@ -18,7 +18,7 @@ namespace NumbersPHP;
  * limitations under the License.
  */
 
-final class NumbersComplex
+final class Complex
 {
     public $real;
     public $imaginary;
@@ -52,7 +52,7 @@ final class NumbersComplex
      */
     public function add($addend)
     {
-        return new NumbersComplex($this->real + $addend->real, $this->imaginary + $addend->imaginary);
+        return new Complex($this->real + $addend->real, $this->imaginary + $addend->imaginary);
     }
 
     /**
@@ -63,7 +63,7 @@ final class NumbersComplex
      */
     public function subtract($subtrahend)
     {
-        return new NumbersComplex($this->real - $subtrahend->real, $this->imaginary - $subtrahend->imaginary);
+        return new Complex($this->real - $subtrahend->real, $this->imaginary - $subtrahend->imaginary);
     }
 
     /**
@@ -74,7 +74,7 @@ final class NumbersComplex
      */
     public function multiply($multiplier)
     {
-        return new NumbersComplex(
+        return new Complex(
             $this->real * $multiplier->real - $this->imaginary * $multiplier->imaginary,
             $this->imaginary * $multiplier->real + $this->real * $multiplier->imaginary
         );
@@ -89,7 +89,7 @@ final class NumbersComplex
     public function divide($divisor)
     {
         $denominator = $divisor->real * $divisor->real + $divisor->imaginary * $divisor->imaginary;
-        return new NumbersComplex(
+        return new Complex(
             ($this->real * $divisor->real + $this->imaginary * $divisor->imaginary) / $denominator,
             ($this->imaginary * $divisor->real - $this->real * $divisor->imaginary) / $denominator
         );
@@ -122,7 +122,7 @@ final class NumbersComplex
      */
     public function conjugate()
     {
-        return new NumbersComplex($this->real, -$this->imaginary);
+        return new Complex($this->real, -$this->imaginary);
     }
 
     /**
@@ -134,7 +134,7 @@ final class NumbersComplex
     public function pow($power)
     {
         $c = pow($this->magnitude(), $power);
-        return new NumbersComplex($c * cos($power * $this->phase()), $c * sin($power * $this->phase()));
+        return new Complex($c * cos($power * $this->phase()), $c * sin($power * $this->phase()));
     }
 
     /**
@@ -148,7 +148,7 @@ final class NumbersComplex
         $square = $this->real * $this->real + $this->imaginary * $this->imaginary;
         $multiplier = pow($square, $power->real / 2) * pow(M_E, -$power->imaginary * $this->phase());
         $theta = $power->real * $this->phase() + 0.5 * $power->imaginary * log($square);
-        return new NumbersComplex($multiplier * cos($theta), $multiplier * sin($theta));
+        return new Complex($multiplier * cos($theta), $multiplier * sin($theta));
     }
 
     /**
@@ -163,7 +163,7 @@ final class NumbersComplex
         for ($i = 0; $i < $root; ++$i) {
             $theta = ($this->phase() + 2 * M_PI * $i) / $root;
             $radius = pow($this->magnitude(), 1 / $root);
-            $result[$i] = new NumbersComplex($radius * cos($theta), $radius * sin($theta));
+            $result[$i] = new Complex($radius * cos($theta), $radius * sin($theta));
         }
         return $result;
     }
@@ -175,11 +175,11 @@ final class NumbersComplex
      */
     public function sin()
     {
-        $e = new NumbersComplex(M_E, 0);
-        $i = new NumbersComplex(0, 1);
-        $negativeI = new NumbersComplex(0, -1);
+        $e = new Complex(M_E, 0);
+        $i = new Complex(0, 1);
+        $negativeI = new Complex(0, -1);
         $numerator = $e->complexPow($i->multiply($this))->subtract($e->complexPow($negativeI->multiply($this)));
-        return $numerator->divide(new NumbersComplex(0, 2));
+        return $numerator->divide(new Complex(0, 2));
     }
 
     /**
@@ -189,11 +189,11 @@ final class NumbersComplex
      */
     public function cos()
     {
-        $e = new NumbersComplex(M_E, 0);
-        $i = new NumbersComplex(0, 1);
-        $negativeI = new NumbersComplex(0, -1);
+        $e = new Complex(M_E, 0);
+        $i = new Complex(0, 1);
+        $negativeI = new Complex(0, -1);
         $numerator = $e->complexPow($i->multiply($this))->add($e->complexPow($negativeI->multiply($this)));
-        return $numerator->divide(new NumbersComplex(2, 0));
+        return $numerator->divide(new Complex(2, 0));
     }
 
     /**

@@ -18,7 +18,7 @@ namespace NumbersPHP;
  * limitations under the License.
  */
 
-final class NumbersPrime
+final class Prime
 {
     /**
      * Determine if number is prime.  This is far from high performance.

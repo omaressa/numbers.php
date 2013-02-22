@@ -18,7 +18,7 @@ namespace NumbersPHP;
  * limitations under the License.
  */
 
-final class NumbersMatrix
+final class Matrix
 {
     /**
      * Return a deep copy of the input matrix.

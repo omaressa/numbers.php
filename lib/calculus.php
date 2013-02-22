@@ -18,7 +18,7 @@ namespace NumbersPHP;
  * limitations under the License.
  */
 
-final class NumbersCalculus
+final class Calculus
 {
     /**
      * Calculate point differential for a specified function at a
