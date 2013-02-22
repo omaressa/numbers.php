@@ -27,6 +27,8 @@
         echo '<br />';
     }
 
+    echo 'Tests Done';
+
     function test($title, $testFunction)
     {
         if ($testFunction())

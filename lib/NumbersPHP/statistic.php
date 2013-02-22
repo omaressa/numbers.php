@@ -186,7 +186,7 @@ final class Statistic
         $xSum = Basic::sum($arrayX);
         $yLog = array_map('log', $arrayY);
         $yLogSum = Basic::sum($yLog);
-        $xSquaredSum = Basic::sum(array_map(array('Basic', 'square'), $arrayX));
+        $xSquaredSum = Basic::sum(array_map('NumbersPHP\Basic::square', $arrayX));
         $xyLogSum = Basic::sum(array_map(create_function('$x, $yLog', 'return $x * $yLog;'), $arrayX, $yLog));
 
         $a = ($yLogSum * $xSquaredSum - $xSum * $xyLogSum) / ($arrayLength * $xSquaredSum - $xSum * $xSum);
@@ -218,7 +218,7 @@ final class Statistic
         $xSum = Basic::sum($arrayX);
         $ySum = Basic::sum($arrayY);
         $xySum = Basic::sum(array_map(create_function('$x, $y', 'return $x * $y;'), $arrayX, $arrayY));
-        $xSquaredSum = Basic::sum(array_map(array('Basic', 'square'), $arrayX));
+        $xSquaredSum = Basic::sum(array_map('NumbersPHP\Basic::square', $arrayX));
         $xMean = self::mean($arrayX);
         $yMean = self::mean($arrayY);
 
