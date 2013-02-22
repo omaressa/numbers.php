@@ -6,5 +6,5 @@
 		$b = array(array(0, 3),
 				   array(1, 4),
 				   array(2, 5));
-		return NumbersMatrix::transpose($a) == $b;
+		return NumbersPHP\Matrix::transpose($a) == $b;
 	}

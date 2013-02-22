@@ -5,5 +5,5 @@
 		$regression = array(9.077131929916444, 8.66937771538526 , 8.279940244595563 , 7.907996710352883,
 							7.552761266818376, 7.213483369166244, 6.8894461878255076, 6.579965093955639,
 							6.284386212956255, 6.002085042954625, 5.732465135352174 );
-		return NumbersBasic::numbersEqual(NumbersStatistic::rSquared($source, $regression), 0.8491729985314136);
+		return NumbersPHP\Basic::numbersEqual(NumbersPHP\Statistic::rSquared($source, $regression), 0.8491729985314136);
 	}

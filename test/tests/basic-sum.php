@@ -1,9 +1,9 @@
 <?php
 	test('sum should return the sum of items in an array', 'testBasicSum01');
 	function testBasicSum01() {
-		if(NumbersBasic::sum(array(0, 1, 2, 3)) != 6)
+		if(NumbersPHP\Basic::sum(array(0, 1, 2, 3)) != 6)
 			return false;
-		if(NumbersBasic::sum(array(0, -3, 5, -2)) != 0)
+		if(NumbersPHP\Basic::sum(array(0, -3, 5, -2)) != 0)
 			return false;
 		return true;
 	}
@@ -11,7 +11,7 @@
 	test('sum should throw an exception when given anything but an array', 'testBasicSum02');
 	function testBasicSum02() {
 		try {
-			NumbersBasic::sum(1);
+			NumbersPHP\Basic::sum(1);
 		}
 		catch(Exception $e) {
 			return $e->getMessage() == 'Input must be of type Array';
@@ -22,7 +22,7 @@
 	test('sum should throw an exception when given anything objects other than numbers', 'testBasicSum03');
 	function testBasicSum03() {
 		try {
-			NumbersBasic::sum(array(1, 2, 'error'));
+			NumbersPHP\Basic::sum(array(1, 2, 'error'));
 		}
 		catch(Exception $e) {
 			return $e->getMessage() == 'All elements in array must be numbers';

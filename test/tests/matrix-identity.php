@@ -4,5 +4,5 @@
 		$a = array(array(1, 0, 0),
 				   array(0, 1, 0),
 				   array(0, 0, 1));
-		return NumbersMatrix::identity(3) == $a;
+		return NumbersPHP\Matrix::identity(3) == $a;
 	}

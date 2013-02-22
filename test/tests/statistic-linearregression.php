@@ -3,8 +3,8 @@
 	function testStatisticLinearRegression() {
 		$arrayX = array(1, 2, 3, 4, 5, 7, 8, 9);
 		$arrayY = array(1, 2, 3, 4, 5, 7, 7, 9);
-		$regressionFunction = NumbersStatistic::linearRegression($arrayX, $arrayY);
-		if(!NumbersBasic::numbersEqual($regressionFunction(20), 19.07218683651805))
+		$regressionFunction = NumbersPHP\Statistic::linearRegression($arrayX, $arrayY);
+		if(!NumbersPHP\Basic::numbersEqual($regressionFunction(20), 19.07218683651805))
 			return false;
 		return true;
 	}

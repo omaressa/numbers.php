@@ -1,8 +1,8 @@
 <?php
 	test('multiply should return the product of two complex numbers', 'testComplexMultiply');
 	function testComplexMultiply() {
-		$a = new NumbersComplex(3, 4);
-		$b = new NumbersComplex(5, 6);
+		$a = new NumbersPHP\Complex(3, 4);
+		$b = new NumbersPHP\Complex(5, 6);
 		$result = $a->multiply($b);
 		if($result->real != -9)
 			return false;
