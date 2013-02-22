@@ -96,7 +96,8 @@ final class Statistic
     /**
      * Return a set of summary statistics provided an array.
      *
-     * @return {Object} summary statistics.
+     * @param $array
+     * @return array summary statistics.
      */
     public static function report($array)
     {
