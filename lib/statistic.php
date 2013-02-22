@@ -29,7 +29,7 @@ final class NumbersStatistic
     public static function mean($array)
     {
         $length = count($array);
-        $sum = NumbersBasic::sum($array);
+        $sum = Basic::sum($array);
         return $sum / $length;
     }
 
@@ -78,9 +78,9 @@ final class NumbersStatistic
     public static function quantile($array, $k, $q)
     {
         if ($k == 0)
-            return NumbersBasic::min($array);
+            return Basic::min($array);
         if ($k == $q)
-            return NumbersBasic::max($array);
+            return Basic::max($array);
         sort($array);
         $index = count($array) * $k / $q;
         if (fmod($index, 1) == 0)
@@ -134,7 +134,7 @@ final class NumbersStatistic
         $squares = array();
         foreach ($array as $element)
             $squares[] = pow($element - $mean, 2);
-        return sqrt(1 / count($array) * NumbersBasic::sum($squares));
+        return sqrt(1 / count($array) * Basic::sum($squares));
     }
 
     /**
@@ -159,8 +159,8 @@ final class NumbersStatistic
      */
     public static function rSquared($source, $regression)
     {
-        $residualSumOfSquares = NumbersBasic::sum(array_map(create_function('$source, $regression', 'return pow($source - $regression, 2);'), $source, $regression));
-        $totalSumOfSquares = NumbersBasic::sum(array_map(create_function('$source', 'return pow($source - ' . self::mean($source) . ', 2);'), $source));
+        $residualSumOfSquares = Basic::sum(array_map(create_function('$source, $regression', 'return pow($source - $regression, 2);'), $source, $regression));
+        $totalSumOfSquares = Basic::sum(array_map(create_function('$source', 'return pow($source - ' . self::mean($source) . ', 2);'), $source));
         return 1 - ($residualSumOfSquares / $totalSumOfSquares);
     }
 
@@ -173,13 +173,13 @@ final class NumbersStatistic
     public static function exponentialRegression($arrayY)
     {
         $arrayLength = count($arrayY);
-        $arrayX = NumbersBasic::range(1, $arrayLength);
+        $arrayX = Basic::range(1, $arrayLength);
 
-        $xSum = NumbersBasic::sum($arrayX);
+        $xSum = Basic::sum($arrayX);
         $yLog = array_map('log', $arrayY);
-        $yLogSum = NumbersBasic::sum($yLog);
-        $xSquaredSum = NumbersBasic::sum(array_map(array('NumbersBasic', 'square'), $arrayX));
-        $xyLogSum = NumbersBasic::sum(array_map(create_function('$x, $yLog', 'return $x * $yLog;'), $arrayX, $yLog));
+        $yLogSum = Basic::sum($yLog);
+        $xSquaredSum = Basic::sum(array_map(array('Basic', 'square'), $arrayX));
+        $xyLogSum = Basic::sum(array_map(create_function('$x, $yLog', 'return $x * $yLog;'), $arrayX, $yLog));
 
         $a = ($yLogSum * $xSquaredSum - $xSum * $xyLogSum) / ($arrayLength * $xSquaredSum - $xSum * $xSum);
         $b = ($arrayLength * $xyLogSum - $xSum * $yLogSum) / ($arrayLength * $xSquaredSum - $xSum * $xSum);
@@ -207,10 +207,10 @@ final class NumbersStatistic
     public static function linearRegression($arrayX, $arrayY)
     {
         $arrayLength = count($arrayY);
-        $xSum = NumbersBasic::sum($arrayX);
-        $ySum = NumbersBasic::sum($arrayY);
-        $xySum = NumbersBasic::sum(array_map(create_function('$x, $y', 'return $x * $y;'), $arrayX, $arrayY));
-        $xSquaredSum = NumbersBasic::sum(array_map(array('NumbersBasic', 'square'), $arrayX));
+        $xSum = Basic::sum($arrayX);
+        $ySum = Basic::sum($arrayY);
+        $xySum = Basic::sum(array_map(create_function('$x, $y', 'return $x * $y;'), $arrayX, $arrayY));
+        $xSquaredSum = Basic::sum(array_map(array('Basic', 'square'), $arrayX));
         $xMean = self::mean($arrayX);
         $yMean = self::mean($arrayY);
 
@@ -240,8 +240,8 @@ final class NumbersStatistic
         if (count($array1) != count($array2))
             throw new Exception('Array mismatch');
         $arrayLength = count($array1);
-        $sum1 = NumbersBasic::sum($array1);
-        $sum2 = NumbersBasic::sum($array2);
+        $sum1 = Basic::sum($array1);
+        $sum2 = Basic::sum($array2);
         $total = 0;
         for ($i = 0; $i < $arrayLength; ++$i)
             $total += $array1[$i] * $array2[$i];

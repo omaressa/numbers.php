@@ -17,7 +17,7 @@ namespace NumbersPHP;
  * limitations under the License.
  */
 
-final class NumbersBasic
+final class Basic
 {
     /**
      * Determine the summation of numbers in a given array.

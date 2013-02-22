@@ -216,7 +216,7 @@ final class NumbersComplex
      */
     public function equals($complex, $epsilon = Numbers::EPSILON)
     {
-        return NumbersBasic::numbersEqual($this->real, $complex->real, $epsilon) &&
-            NumbersBasic::numbersEqual($this->imaginary, $complex->imaginary, $epsilon);
+        return Basic::numbersEqual($this->real, $complex->real, $epsilon) &&
+            Basic::numbersEqual($this->imaginary, $complex->imaginary, $epsilon);
     }
 }

@@ -79,12 +79,12 @@ final class NumbersPrime
     {
         if ($n == 2)
             return true;
-        if (!NumbersBasic::isInt($n) || $n <= 1 || $n % 2 == 0)
+        if (!Basic::isInt($n) || $n <= 1 || $n % 2 == 0)
             return false;
         $s = 0;
         $d = $n - 1;
         while (true) {
-            $divMod = NumbersBasic::divMod($d, 2);
+            $divMod = Basic::divMod($d, 2);
             if ($divMod[1] == 1)
                 break;
             $s += 1;
@@ -100,10 +100,10 @@ final class NumbersPrime
 
     private static function millerRabinTryComposite($a, $s, $d, $n)
     {
-        if (NumbersBasic::powerMod($a, $d, $n) == 1)
+        if (Basic::powerMod($a, $d, $n) == 1)
             return false;
         for ($i = 0; $i < $s; ++$i)
-            if (NumbersBasic::powerMod($a, pow(2, $i) * $d, $n) == $n - 1)
+            if (Basic::powerMod($a, pow(2, $i) * $d, $n) == $n - 1)
                 return false;
         return true;
     }
@@ -141,7 +141,7 @@ final class NumbersPrime
      */
     public static function coprime($a, $b)
     {
-        return NumbersBasic::gcd($a, $b) == 1;
+        return Basic::gcd($a, $b) == 1;
     }
 
     /**
