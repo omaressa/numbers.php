@@ -1,6 +1,8 @@
 # Numbers.php
 [Numbers.php](https://github.com/powder96/numbers.php/) - an advanced mathematics toolkit for PHP >= 5.3. It is a port of [Numbers.js](https://github.com/sjkaliski/numbers.js/) - same toolkit for JavaScript.
 
+There is a version of Numbers.php which supports PHP 5.2, but it is no longer developed: https://github.com/powder96/numbers.php/archive/fd946ea8742ba46789dc2a38cc6c1f93a7512e6d.zip
+
 ## Description
 
 Numbers.php provides a comprehensive set of mathematical tools that currently are not offered in PHP. These tools include:
