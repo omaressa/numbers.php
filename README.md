@@ -3,7 +3,7 @@
 
 ## Description
 
-Numbers.php provides a comprehensive set of mathematical tools that currently are not offered in PHP.  These tools include:
+Numbers.php provides a comprehensive set of mathematical tools that currently are not offered in PHP. These tools include:
 
 * Basic calculations
 * Calculus
