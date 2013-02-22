@@ -54,10 +54,11 @@ final class Statistic
     {
         $counts = array();
         for ($i = 0, $arrayLength = count($array); $i < $arrayLength; ++$i) {
-            if (!isset($counts[$array[$i]]))
+            if (!isset($counts[$array[$i]])) {
                 $counts[$array[$i]] = 0;
-            else
+            } else {
                 ++$counts[$array[$i]];
+            }
         }
         arsort($counts);
         reset($counts);
@@ -77,14 +78,17 @@ final class Statistic
      */
     public static function quantile($array, $k, $q)
     {
-        if ($k == 0)
+        if ($k == 0) {
             return Basic::min($array);
-        if ($k == $q)
+        }
+        if ($k == $q) {
             return Basic::max($array);
+        }
         sort($array);
         $index = count($array) * $k / $q;
-        if (fmod($index, 1) == 0)
+        if (fmod($index, 1) == 0) {
             return 0.5 * $array[$index - 1] + 0.5 * $array[$index];
+        }
         return $array[floor($index)];
     }
 
@@ -117,8 +121,9 @@ final class Statistic
     {
         $precision = pow(Numbers::EPSILON, -1);
         $sample = array();
-        while (count($sample) < $quantity)
+        while (count($sample) < $quantity) {
             $sample[] = mt_rand($lower * $precision, $upper * $precision) / $precision;
+        }
         return $sample;
     }
 
@@ -132,8 +137,9 @@ final class Statistic
     {
         $mean = self::mean($array);
         $squares = array();
-        foreach ($array as $element)
+        foreach ($array as $element) {
             $squares[] = pow($element - $mean, 2);
+        }
         return sqrt(1 / count($array) * Basic::sum($squares));
     }
 
@@ -145,8 +151,9 @@ final class Statistic
      */
     public static function correlation($array1, $array2)
     {
-        if (count($array1) != count($array2))
-            throw new Exception('Array mismatch');
+        if (count($array1) != count($array2)) {
+            throw new \Exception('Array mismatch');
+        }
         return self::covariance($array1, $array2) / (self::standardDev($array1) * self::standardDev($array2));
     }
 
@@ -237,14 +244,16 @@ final class Statistic
      */
     public static function covariance($array1, $array2)
     {
-        if (count($array1) != count($array2))
-            throw new Exception('Array mismatch');
+        if (count($array1) != count($array2)) {
+            throw new \Exception('Array mismatch');
+        }
         $arrayLength = count($array1);
         $sum1 = Basic::sum($array1);
         $sum2 = Basic::sum($array2);
         $total = 0;
-        for ($i = 0; $i < $arrayLength; ++$i)
+        for ($i = 0; $i < $arrayLength; ++$i) {
             $total += $array1[$i] * $array2[$i];
+        }
         return ($total - $sum1 * $sum2 / $arrayLength) / $arrayLength;
     }
 }

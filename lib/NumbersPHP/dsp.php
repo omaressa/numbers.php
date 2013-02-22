@@ -32,8 +32,9 @@ final class DSP
     public static function segment($array, $start, $step)
     {
         $result = array();
-        for ($i = $start, $arrayLength = count($array); $i < $arrayLength; $i += $step)
+        for ($i = $start, $arrayLength = count($array); $i < $arrayLength; $i += $step) {
             $result[] = $array[$i];
+        }
         return $result;
     }
 
@@ -48,10 +49,12 @@ final class DSP
     public static function fft($array)
     {
         $arrayLength = count($array);
-        if ($arrayLength <= 1)
+        if ($arrayLength <= 1) {
             return array(new Complex($array[0], 0));
-        if (log($arrayLength) / M_LN2 % 1 !== 0)
-            throw new Exception('Array length must be integer power of 2');
+        }
+        if (log($arrayLength) / M_LN2 % 1 !== 0) {
+            throw new \Exception('Array length must be integer power of 2');
+        }
         $even = self::fft(self::segment($array, 0, 2));
         $odd = self::fft(self::segment($array, 1, 2));
         $result = array();
@@ -59,10 +62,11 @@ final class DSP
         for ($k = 0; $k < $arrayLength; ++$k) {
             $phase = -2 * M_PI * $k / $arrayLength;
             $phasor = new Complex(cos($phase), sin($phase));
-            if ($k < $halfLength)
+            if ($k < $halfLength) {
                 $result[$k] = $even[$k]->add($phasor->multiply($odd[$k]));
-            else
+            } else {
                 $result[$k] = $even[$k - $halfLength]->subtract($phasor->multiply($odd[$k - $halfLength]));
+            }
         }
         return $result;
     }

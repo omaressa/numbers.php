@@ -41,10 +41,11 @@ final class Generators
         $b = 0;
         $c = 1;
         foreach ($bits as $bit) {
-            if ($bit)
+            if ($bit) {
                 list($a, $b) = array(($a + $c) * $b, $b * $b + $c * $c);
-            else
+            } else {
                 list($a, $b) = array($a * $a + $b * $b, ($a + $c) * $b);
+            }
             $c = $a + $b;
         }
         return $b;
@@ -60,11 +61,13 @@ final class Generators
     public static function collatz($number, &$array)
     {
         $array[] = $number;
-        if ($number === 1)
+        if ($number === 1) {
             return $array;
-        if ($number % 2 === 0)
+        }
+        if ($number % 2 === 0) {
             self::collatz($number / 2, $array);
-        else
+        } else {
             self::collatz(3 * $number + 1, $array);
+        }
     }
 }

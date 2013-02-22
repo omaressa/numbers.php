@@ -52,12 +52,15 @@ final class Calculus
     {
         $step = ($finish - $start) / $quantity;
         $totalHeight = 0;
-        if ($sampler === null)
-            for ($i = $start; $i < $finish; $i += $step)
+        if ($sampler === null) {
+            for ($i = $start; $i < $finish; $i += $step) {
                 $totalHeight += $function($i);
-        else
-            for ($i = $start; $i < $finish; $i += $step)
+            }
+        } else {
+            for ($i = $start; $i < $finish; $i += $step) {
                 $totalHeight += $function($sampler($i, $i + $step));
+            }
+        }
         return $totalHeight * $step;
     }
 
@@ -94,10 +97,11 @@ final class Calculus
         $c = $a + $b;
         $left = self::simpsonDef($function, $a, $c);
         $right = self::simpsonDef($function, $c, $b);
-        if (abs($left + $right - $whole) <= 15 * $epsilon)
+        if (abs($left + $right - $whole) <= 15 * $epsilon) {
             return $left + $right + ($left + $right - $whole) / 15;
-        else
+        } else {
             return self::simpsonRecursive($function, $a, $c, $epsilon / 2, $left) + self::simpsonRecursive($function, $c, $b, $epsilon / 2, $right);
+        }
     }
 
     /**
@@ -161,13 +165,15 @@ final class Calculus
             771.32342877765313, -176.61502916214059, 12.507343278686905,
             -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7);
         $g = 7;
-        if ($number < 0.5)
+        if ($number < 0.5) {
             return M_PI / (sin(M_PI * $number) * self::lanczosGamma(1 - $number));
+        }
         --$number;
         $a = $p[0];
         $t = $number + $g + 0.5;
-        for ($i = 1; $i < count($p); ++$i)
+        for ($i = 1; $i < count($p); ++$i) {
             $a += $p[$i] / ($number + $i);
+        }
         return sqrt(2 * M_PI) * pow($t, $number + 0.5) * exp(-$t) * $a;
     }
 }

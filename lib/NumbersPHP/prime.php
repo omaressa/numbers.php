@@ -28,13 +28,17 @@ final class Prime
      */
     public static function simple($number)
     {
-        if ($number == 1)
+        if ($number == 1) {
             return false;
-        if ($number == 2)
+        }
+        if ($number == 2) {
             return true;
-        for ($i = 2, $sqrt = ceil(sqrt($number)); $i <= $sqrt; ++$i)
-            if ($number % $i == 0)
+        }
+        for ($i = 2, $sqrt = ceil(sqrt($number)); $i <= $sqrt; ++$i) {
+            if ($number % $i == 0) {
                 return false;
+            }
+        }
         return true;
     }
 
@@ -57,7 +61,9 @@ final class Prime
             $x = 2;
             if (fmod($number, $x) != 0) {
                 $x = 3;
-                while ((fmod($number, $x) != 0) && (($x += 2) < $sqrt)) ;
+                while ((fmod($number, $x) != 0) && (($x += 2) < $sqrt)) {
+
+                }
             }
             $x = ($sqrt < $x) ? $number : $x;
             $factors[] = $x;
@@ -77,34 +83,41 @@ final class Prime
      */
     public static function millerRabin($n, $k = 20)
     {
-        if ($n == 2)
+        if ($n == 2) {
             return true;
-        if (!Basic::isInt($n) || $n <= 1 || $n % 2 == 0)
+        }
+        if (!Basic::isInt($n) || $n <= 1 || $n % 2 == 0) {
             return false;
+        }
         $s = 0;
         $d = $n - 1;
         while (true) {
             $divMod = Basic::divMod($d, 2);
-            if ($divMod[1] == 1)
+            if ($divMod[1] == 1) {
                 break;
+            }
             $s += 1;
             $d = $divMod[0];
         }
         for ($i = 0; $i < $k; ++$i) {
             $a = floor(mt_rand(2, $n - 2));
-            if (self::millerRabinTryComposite($a, $s, $d, $n))
+            if (self::millerRabinTryComposite($a, $s, $d, $n)) {
                 return false;
+            }
         }
         return true;
     }
 
     private static function millerRabinTryComposite($a, $s, $d, $n)
     {
-        if (Basic::powerMod($a, $d, $n) == 1)
+        if (Basic::powerMod($a, $d, $n) == 1) {
             return false;
-        for ($i = 0; $i < $s; ++$i)
-            if (Basic::powerMod($a, pow(2, $i) * $d, $n) == $n - 1)
+        }
+        for ($i = 0; $i < $s; ++$i) {
+            if (Basic::powerMod($a, pow(2, $i) * $d, $n) == $n - 1) {
                 return false;
+            }
+        }
         return true;
     }
 
@@ -116,18 +129,21 @@ final class Prime
      */
     public static function sieve($limit)
     {
-        if ($limit < 2)
+        if ($limit < 2) {
             return array();
+        }
         $result = array(2);
         for ($i = 3; $i <= $limit; ++$i) {
             $isPrime = true;
-            foreach ($result as $j)
+            foreach ($result as $j) {
                 if ($i % $j == 0) {
                     $isPrime = false;
                     break;
                 }
-            if ($isPrime)
+            }
+            if ($isPrime) {
                 $result[] = $i;
+            }
         }
         return $result;
     }
@@ -156,8 +172,9 @@ final class Prime
     public static function getPerfectPower($number)
     {
         $test = self::getPrimePower($number);
-        if ($test !== false && $test[1] > 1)
+        if ($test !== false && $test[1] > 1) {
             return $test;
+        }
         return false;
     }
 
@@ -170,21 +187,26 @@ final class Prime
      */
     public static function getPrimePower($number)
     {
-        if ($number < 2)
+        if ($number < 2) {
             return false;
-        if (self::millerRabin($number))
+        }
+        if (self::millerRabin($number)) {
             return array($number, 1);
-        if ($number % 2 == 0)
+        }
+        if ($number % 2 == 0) {
             return array(2, strlen(base_convert((string)$number, 10, 2)) - 1);
+        }
         $factors = self::factorization($number);
-        if (empty($factors))
+        if (empty($factors)) {
             return false;
+        }
         for ($i = 0, $factorsLength = count($factors); $i < $factorsLength; ++$i) {
             $t = $p = 0;
             while ($t <= $number) {
                 $t = pow($factors[$i], $p);
-                if ($t / $number == 1)
+                if ($t / $number == 1) {
                     return array($factors[$i], $p);
+                }
                 ++$p;
             }
         }

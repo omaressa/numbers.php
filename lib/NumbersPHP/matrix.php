@@ -28,8 +28,9 @@ final class Matrix
      */
     public static function deepCopy($matrix)
     {
-        if (!isset($matrix[0][0]))
-            throw new Exception('Input cannot be a vector.');
+        if (!isset($matrix[0][0])) {
+            throw new \Exception('Input cannot be a vector.');
+        }
         return $matrix;
     }
 
@@ -54,12 +55,15 @@ final class Matrix
      */
     public static function addition($a, $b)
     {
-        if (($rows = count($a)) != count($b) || ($columns = count($a[0])) != count($b[0]))
-            throw new Exception('Matrix mismatch');
+        if (($rows = count($a)) != count($b) || ($columns = count($a[0])) != count($b[0])) {
+            throw new \Exception('Matrix mismatch');
+        }
         $sum = array();
-        for ($y = 0; $y < $rows; ++$y)
-            for ($x = 0; $x < $columns; ++$x)
+        for ($y = 0; $y < $rows; ++$y) {
+            for ($x = 0; $x < $columns; ++$x) {
                 $sum[$y][$x] = $a[$y][$x] + $b[$y][$x];
+            }
+        }
         return $sum;
     }
 
@@ -75,9 +79,11 @@ final class Matrix
         $rows = count($a);
         $columns = count($a[0]);
         $product = array();
-        for ($y = 0; $y < $rows; ++$y)
-            for ($x = 0; $x < $columns; ++$x)
+        for ($y = 0; $y < $rows; ++$y) {
+            for ($x = 0; $x < $columns; ++$x) {
                 $product[$y][$x] = $a[$y][$x] * $b;
+            }
+        }
         return $product;
     }
 
@@ -92,9 +98,11 @@ final class Matrix
         $rows = count($matrix);
         $columns = count($matrix[0]);
         $transposed = array();
-        for ($y = 0; $y < $rows; ++$y)
-            for ($x = 0; $x < $columns; ++$x)
+        for ($y = 0; $y < $rows; ++$y) {
+            for ($x = 0; $x < $columns; ++$x) {
                 $transposed[$x][$y] = $matrix[$y][$x];
+            }
+        }
         return $transposed;
     }
 
@@ -107,9 +115,11 @@ final class Matrix
     public static function identity($dimension)
     {
         $identity = array();
-        for ($y = 0; $y < $dimension; ++$y)
-            for ($x = 0; $x < $dimension; ++$x)
+        for ($y = 0; $y < $dimension; ++$y) {
+            for ($x = 0; $x < $dimension; ++$x) {
                 $identity[$y][$x] = (int)($x == $y);
+            }
+        }
         return $identity;
     }
 
@@ -122,11 +132,13 @@ final class Matrix
      */
     public static function dotproduct($a, $b)
     {
-        if (($length = count($a)) != count($b))
-            throw new Exception('Vector mismatch');
+        if (($length = count($a)) != count($b)) {
+            throw new \Exception('Vector mismatch');
+        }
         $product = 0;
-        for ($i = 0; $i < $length; ++$i)
+        for ($i = 0; $i < $length; ++$i) {
             $product += $a[$i] * $b[$i];
+        }
         return $product;
     }
 
@@ -142,15 +154,18 @@ final class Matrix
      */
     public static function multiply($a, $b)
     {
-        if (count($a[0]) != count($b))
-            throw new Exception('Array mismatch');
+        if (count($a[0]) != count($b)) {
+            throw new \Exception('Array mismatch');
+        }
         $rows = count($a);
         $columns = count($b[0]);
         $bT = self::transpose($b);
         $product = array();
-        for ($y = 0; $y < $rows; ++$y)
-            for ($x = 0; $x < $columns; ++$x)
+        for ($y = 0; $y < $rows; ++$y) {
+            for ($x = 0; $x < $columns; ++$x) {
                 $product[$y][$x] = self::dotproduct($a[$y], $bT[$x]);
+            }
+        }
         return $product;
     }
 
@@ -165,13 +180,16 @@ final class Matrix
     {
         $rows = count($matrix);
         $columns = count($matrix[0]);
-        if ($rows != $columns)
-            throw new Exception('Not a square matrix');
+        if ($rows != $columns) {
+            throw new \Exception('Not a square matrix');
+        }
         $determinant = 0;
-        if ($rows == 1)
+        if ($rows == 1) {
             return $matrix[0][0];
-        if ($rows == 2)
+        }
+        if ($rows == 2) {
             return $matrix[0][0] * $matrix[1][1] - $matrix[0][1] * $matrix[1][0];
+        }
         for ($x = 0; $x < $columns; ++$x) {
             $diagLeft = $diagRight = $matrix[0][$x];
             for ($y = 1; $y < $rows; ++$y) {
@@ -203,8 +221,9 @@ final class Matrix
      */
     public static function lupDecomposition($matrix)
     {
-        if (!self::isSquare($matrix))
-            throw new Exception('Matrix must be square');
+        if (!self::isSquare($matrix)) {
+            throw new \Exception('Matrix must be square');
+        }
         $size = count($matrix);
         $lu = $matrix;
         $p = self::transpose(self::identity($size));
@@ -212,22 +231,27 @@ final class Matrix
             for ($y = 0; $y < $size; ++$y) {
                 $minIndex = min($x, $y);
                 $s = 0;
-                for ($k = 0; $k < $minIndex; ++$k)
+                for ($k = 0; $k < $minIndex; ++$k) {
                     $s += $lu[$y][$k] * $lu[$k][$x];
+                }
                 $lu[$y][$x] -= $s;
             }
             // find pivot
             $pivot = $x;
-            for ($y = $x + 1; $y < $size; ++$y)
-                if (abs($lu[$y][$x]) > abs($lu[$pivot][$x]))
+            for ($y = $x + 1; $y < $size; ++$y) {
+                if (abs($lu[$y][$x]) > abs($lu[$pivot][$x])) {
                     $pivot = $y;
+                }
+            }
             if ($pivot != $x) {
                 $lu = self::rowSwitch($lu, $pivot, $x);
                 $p = self::rowSwitch($p, $pivot, $x);
             }
-            if ($x < $size && $lu[$x][$x] != 0)
-                for ($y = $x + 1; $y < $size; ++$y)
+            if ($x < $size && $lu[$x][$x] != 0) {
+                for ($y = $x + 1; $y < $size; ++$y) {
                     $lu[$y][$x] /= $lu[$x][$x];
+                }
+            }
         }
         return array(self::lupDecompositionGetL($lu), self::lupDecompositionGetU($lu), $p);
     }
@@ -236,10 +260,13 @@ final class Matrix
     {
         $size = count($matrix[0]);
         $l = self::identity($size);
-        for ($y = 0; $y < $size; ++$y)
-            for ($x = 0; $x < $size; ++$x)
-                if ($y > $x)
+        for ($y = 0; $y < $size; ++$y) {
+            for ($x = 0; $x < $size; ++$x) {
+                if ($y > $x) {
                     $l[$y][$x] = $matrix[$y][$x];
+                }
+            }
+        }
         return $l;
     }
 
@@ -247,10 +274,13 @@ final class Matrix
     {
         $size = count($matrix[0]);
         $u = self::identity($size);
-        for ($y = 0; $y < $size; ++$y)
-            for ($x = 0; $x < $size; ++$x)
-                if ($y <= $x)
+        for ($y = 0; $y < $size; ++$y) {
+            for ($x = 0; $x < $size; ++$x) {
+                if ($y <= $x) {
                     $u[$y][$x] = $matrix[$y][$x];
+                }
+            }
+        }
         return $u;
     }
 
@@ -264,8 +294,9 @@ final class Matrix
      */
     public static function rotate($point, $angle, $direction)
     {
-        if (count($point) != 2)
-            throw new Exception('Only two dimensional operations are supported at this time');
+        if (count($point) != 2) {
+            throw new \Exception('Only two dimensional operations are supported at this time');
+        }
         $negate = $direction == 'clockwise' ? -1 : 1;
         $angle = deg2rad($angle);
         $transformation = array(array(cos($angle), -1 * $negate * sin($angle)),
@@ -283,8 +314,9 @@ final class Matrix
      */
     public static function scale($point, $x, $y)
     {
-        if (count($point) != 2)
-            throw new Exception('Only two dimensional operations are supported at this time');
+        if (count($point) != 2) {
+            throw new \Exception('Only two dimensional operations are supported at this time');
+        }
         $transformation = array(array($x, 0),
             array(0, $y));
         return self::multiply($transformation, $point);
@@ -300,8 +332,9 @@ final class Matrix
      */
     public static function shear($point, $k, $direction)
     {
-        if (count($point) != 2)
-            throw new Exception('Only two dimensional operations are supported at this time');
+        if (count($point) != 2) {
+            throw new \Exception('Only two dimensional operations are supported at this time');
+        }
         $transformation = array(array(1, ($direction == 'xaxis' ? $k : 0)),
             array(($direction == 'yaxis' ? $k : 0), 1));
         return self::multiply($transformation, $point);
@@ -317,8 +350,9 @@ final class Matrix
      */
     public static function affine($point, $x, $y)
     {
-        if (count($point) != 2)
-            throw new Exception('Only two dimensional operations are supported at this time');
+        if (count($point) != 2) {
+            throw new \Exception('Only two dimensional operations are supported at this time');
+        }
         $transformation = array(array(1, 0, $x),
             array(0, 1, $y),
             array(0, 0, 1));
@@ -343,13 +377,15 @@ final class Matrix
         $rows = count($matrix);
         $columns = count($matrix[0]);
         $updated = array();
-        for ($y = 0; $y < $rows; ++$y)
+        for ($y = 0; $y < $rows; ++$y) {
             for ($x = 0; $x < $columns; ++$x) {
-                if ($y == $row)
+                if ($y == $row) {
                     $updated[$y][$x] = $scale * $matrix[$y][$x];
-                else
+                } else {
                     $updated[$y][$x] = $matrix[$y][$x];
+                }
             }
+        }
         return $updated;
     }
 
@@ -366,14 +402,18 @@ final class Matrix
         $rows = count($matrix);
         $columns = count($matrix[0]);
         $updated = array();
-        for ($y = 0; $y < $rows; ++$y)
+        for ($y = 0; $y < $rows; ++$y) {
             for ($x = 0; $x < $columns; ++$x) {
-                if ($y == $row1)
+                if ($y == $row1) {
                     $updated[$y][$x] = $matrix[$row2][$x];
-                elseif ($y == $row2)
-                    $updated[$y][$x] = $matrix[$row1][$x]; else
+                } elseif ($y == $row2) {
+                    $updated[$y][$x] = $matrix[$row1][$x];
+                } else {
                     $updated[$y][$x] = $matrix[$y][$x];
+                }
             }
+        }
+
         return $updated;
     }
 
@@ -391,13 +431,15 @@ final class Matrix
         $rows = count($matrix);
         $columns = count($matrix[0]);
         $updated = array();
-        for ($y = 0; $y < $rows; ++$y)
+        for ($y = 0; $y < $rows; ++$y) {
             for ($x = 0; $x < $columns; ++$x) {
-                if ($y == $to)
+                if ($y == $to) {
                     $updated[$y][$x] = $matrix[$to][$x] + $scale * $matrix[$from][$x];
-                else
+                } else {
                     $updated[$y][$x] = $matrix[$y][$x];
+                }
             }
+        }
         return $updated;
     }
 }

@@ -28,12 +28,14 @@ final class Basic
      */
     public static function sum($array)
     {
-        if (!is_array($array))
+        if (!is_array($array)) {
             throw new \Exception('Input must be of type Array');
+        }
         $total = 0;
         for ($i = 0, $arrayLength = count($array); $i < $arrayLength; ++$i) {
-            if (!is_numeric($array[$i]))
+            if (!is_numeric($array[$i])) {
                 throw new \Exception('All elements in array must be numbers');
+            }
             $total += $array[$i];
         }
         return $total;
@@ -50,14 +52,17 @@ final class Basic
      */
     public static function subtraction($array)
     {
-        if (!is_array($array))
+        if (!is_array($array)) {
             throw new \Exception('Input must be of type Array');
-        if (!is_numeric($array[0]))
+        }
+        if (!is_numeric($array[0])) {
             throw new \Exception('All elements in array must be numbers');
+        }
         $total = $array[0];
         for ($i = 1, $arrayLength = count($array); $i < $arrayLength; ++$i) {
-            if (!is_numeric($array[$i]))
+            if (!is_numeric($array[$i])) {
                 throw new \Exception('All elements in array must be numbers');
+            }
             $total -= $array[$i];
         }
         return $total;
@@ -72,12 +77,14 @@ final class Basic
      */
     public static function product($array)
     {
-        if (!is_array($array))
+        if (!is_array($array)) {
             throw new \Exception('Input must be of type Array');
+        }
         $total = 1;
         for ($i = 0, $arrayLength = count($array); $i < $arrayLength; ++$i) {
-            if (!is_numeric($array[$i]))
+            if (!is_numeric($array[$i])) {
                 throw new \Exception('All elements in array must be numbers');
+            }
             $total *= $array[$i];
         }
         return $total;
@@ -104,20 +111,24 @@ final class Basic
     public static function binomial($n, $k)
     {
         $array = array();
-        return self::_binomial($array, $n, $k);
+        return self::binomialRecursive($array, $n, $k);
     }
 
-    private static function _binomial(&$array, $n, $k)
+    private static function binomialRecursive(&$array, $n, $k)
     {
-        if ($n >= 0 && $k == 0)
+        if ($n >= 0 && $k == 0) {
             return 1;
-        if ($n == 0 && $k > 0)
+        }
+        if ($n == 0 && $k > 0) {
             return 0;
-        if (isset($array[$n]) && isset($array[$n][$k]) && $array[$n][$k] > 0)
+        }
+        if (isset($array[$n]) && isset($array[$n][$k]) && $array[$n][$k] > 0) {
             return $array[$n][$k];
-        if (!isset($array[$n]))
+        }
+        if (!isset($array[$n])) {
             $array[$n] = array();
-        return $array[$n][$k] = self::_binomial($array, $n - 1, $k - 1) + self::_binomial($array, $n - 1, $k);
+        }
+        return $array[$n][$k] = self::binomialRecursive($array, $n - 1, $k - 1) + self::binomialRecursive($array, $n - 1, $k);
     }
 
     /**
@@ -129,8 +140,9 @@ final class Basic
     public static function factorial($number)
     {
         $factorial = 1;
-        for ($i = 2; $i <= $number; ++$i)
+        for ($i = 2; $i <= $number; ++$i) {
             $factorial *= $i;
+        }
         return $factorial;
     }
 
@@ -176,17 +188,20 @@ final class Basic
      */
     public static function random($array, $quantity, $allowDuplicates)
     {
-        if (empty($array))
+        if (empty($array)) {
             throw new \Exception('Empty array');
+        }
         $arrayLength = count($array);
         if ($allowDuplicates) {
             $result = array();
-            for ($i = 0; $i < $quantity; ++$i)
+            for ($i = 0; $i < $quantity; ++$i) {
                 $result[$i] = $array[mt_rand(0, $arrayLength - 1)];
+            }
             return $result;
         } else {
-            if ($quantity > $arrayLength)
+            if ($quantity > $arrayLength) {
                 throw new \Exception('Quantity requested exceeds size of array');
+            }
             return array_slice(self::shuffle($array), 0, $quantity);
         }
     }
@@ -234,10 +249,12 @@ final class Basic
      */
     public static function range($start = 0, $stop = null, $step = 1)
     {
-        if ($stop === null)
+        if ($stop === null) {
             $stop = $start;
-        if ($stop < $start)
+        }
+        if ($stop < $start) {
             $step = -abs($step);
+        }
         $array = array();
         $length = max(ceil(($stop - $start) / $step + 1), 0);
         for ($i = 0; $i < $length; ++$i) {
@@ -255,10 +272,11 @@ final class Basic
      */
     public static function isInt($number)
     {
-        if (is_numeric($number))
+        if (is_numeric($number)) {
             return (int)$number == (float)$number;
-        else
+        } else {
             return false;
+        }
     }
 
     /**
@@ -270,8 +288,10 @@ final class Basic
      */
     public static function divMod($a, $b)
     {
-        if (!self::isInt($a) || !self::isInt($b))
+        if (!self::isInt($a) || !self::isInt($b)) {
             return false;
+        }
+
         return array(floor($a / $b), $a % $b);
     }
 
@@ -289,24 +309,29 @@ final class Basic
     public static function powerMod($a, $b, $m)
     {
         // If b < -1 should be a small number, this method should work for now.
-        if ($b < -1)
+        if ($b < -1) {
             return pow($a, $b) % $m;
-        if ($b == 0)
+        }
+        if ($b == 0) {
             return 1 % $m;
+        }
         if ($b >= 1) {
             $result = 1;
             while ($b > 0) {
-                if ($b % 2 == 1)
+                if ($b % 2 == 1) {
                     $result = fmod($result * $a, $m);
+                }
                 $a = fmod($a * $a, $m);
                 $b = $b >> 1;
             }
             return $result;
         }
-        if ($b == -1)
+        if ($b == -1) {
             return self::modInverse($a, $m);
-        if ($b < 1)
+        }
+        if ($b < 1) {
             return self::powerMod($a, pow($b, -1), $m);
+        }
     }
 
     /**
@@ -348,8 +373,9 @@ final class Basic
     public static function modInverse($a, $m)
     {
         $r = self::egcd($a, $m);
-        if ($r[0] != 1)
+        if ($r[0] != 1) {
             throw new \Exception('No modular inverse exists');
+        }
         return $r[1] % $m;
     }
 
@@ -379,12 +405,15 @@ final class Basic
     {
         $i = ($n - $k + 1);
         $r = 1;
-        if ($n < 0)
+        if ($n < 0) {
             throw new \Exception('n cannot be negative');
-        if ($k > $n)
+        }
+        if ($k > $n) {
             return 0;
-        while ($i <= $n)
+        }
+        while ($i <= $n) {
             $r *= $i++;
+        }
         return $r;
     }
 }
