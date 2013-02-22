@@ -36,7 +36,7 @@ class BasicTest extends \PHPUnit_Framework_TestCase
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+            'This test has not been implemented yet.'
         );
     }
 
@@ -48,7 +48,7 @@ class BasicTest extends \PHPUnit_Framework_TestCase
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+            'This test has not been implemented yet.'
         );
     }
 
@@ -60,7 +60,7 @@ class BasicTest extends \PHPUnit_Framework_TestCase
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+            'This test has not been implemented yet.'
         );
     }
 
@@ -72,7 +72,7 @@ class BasicTest extends \PHPUnit_Framework_TestCase
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+            'This test has not been implemented yet.'
         );
     }
 
@@ -84,7 +84,7 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             10,
             \NumbersPHP\Basic::binomial(5, 3),
-            'binomial should return the binomial coefficient (n choose k) of two numbers', 'testBasicBinomial'
+            'binomial should return the binomial coefficient (n choose k) of two numbers'
         );
     }
 
@@ -128,13 +128,13 @@ class BasicTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers NumbersPHP\Basic::lcm
-     * @todo   Implement testLcm().
      */
     public function testLcm()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+        $this->assertEquals(
+            240,
+            \NumbersPHP\Basic::lcm(12, 80),
+            'lcm should return the least common multiple of two integers'
         );
     }
 
@@ -146,7 +146,7 @@ class BasicTest extends \PHPUnit_Framework_TestCase
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+            'This test has not been implemented yet.'
         );
     }
 
@@ -158,19 +158,19 @@ class BasicTest extends \PHPUnit_Framework_TestCase
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+            'This test has not been implemented yet.'
         );
     }
 
     /**
      * @covers NumbersPHP\Basic::max
-     * @todo   Implement testMax().
      */
     public function testMax()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+        $this->assertEquals(
+            42,
+            \NumbersPHP\Basic::max(array(1, 2, 3, 42)),
+            'max should return the biggest number in an array'
         );
     }
 
@@ -180,9 +180,10 @@ class BasicTest extends \PHPUnit_Framework_TestCase
      */
     public function testMin()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+        $this->assertEquals(
+            1,
+            \NumbersPHP\Basic::min(array(2, 1, 3, 42)),
+            'min should return the smallest number in an array'
         );
     }
 
@@ -194,7 +195,7 @@ class BasicTest extends \PHPUnit_Framework_TestCase
     {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+            'This test has not been implemented yet.'
         );
     }
 
@@ -204,10 +205,10 @@ class BasicTest extends \PHPUnit_Framework_TestCase
     public function testIsInt()
     {
 
-        $this->assertTrue(\NumbersPHP\Basic::isInt(2.32));
-        $this->assertTrue(\NumbersPHP\Basic::isInt('true'));
-        $this->assertTrue(!\NumbersPHP\Basic::isInt('2'));
-        $this->assertTrue(!\NumbersPHP\Basic::isInt(2));
+        $this->assertFalse(\NumbersPHP\Basic::isInt(2.32));
+        $this->assertFalse(\NumbersPHP\Basic::isInt('true'));
+        $this->assertTrue(\NumbersPHP\Basic::isInt('2'));
+        $this->assertTrue(\NumbersPHP\Basic::isInt(2));
     }
 
     /**
@@ -231,13 +232,32 @@ class BasicTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers NumbersPHP\Basic::powerMod
-     * @todo   Implement testPowerMod().
      */
     public function testPowerMod()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+        $this->assertEquals(
+            1,
+            \NumbersPHP\Basic::powerMod(1, -1, 5)
+        );
+
+        $this->assertEquals(
+            1,
+            \NumbersPHP\Basic::powerMod(2, 10, 3)
+        );
+
+        $this->assertEquals(
+            16,
+            \NumbersPHP\Basic::powerMod(2, pow(10, 9), 18)
+        );
+
+        $this->assertEquals(
+            6,
+            \NumbersPHP\Basic::powerMod(6, 0.5, 10)
+        );
+
+        $this->assertEquals(
+            455,
+            \NumbersPHP\Basic::powerMod(4, 13, 497)
         );
     }
 
@@ -281,26 +301,33 @@ class BasicTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers NumbersPHP\Basic::modInverse
-     * @todo   Implement testModInverse().
+     * @expectedException \Exception
      */
     public function testModInverse()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+        $this->assertEquals(
+            1,
+            \NumbersPHP\Basic::modInverse(1, 5),
+            'modInverse will return the modulo m inverse of a'
         );
+
+        \NumbersPHP\Basic::modInverse(65, 40);
     }
 
     /**
      * @covers NumbersPHP\Basic::numbersEqual
-     * @todo   Implement testNumbersEqual().
      */
     public function testNumbersEqual()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+        $this->assertTrue(\NumbersPHP\Basic::numbersEqual(5, 5, \NumbersPHP\Numbers::EPSILON));
+
+        $this->assertTrue(\NumbersPHP\Basic::numbersEqual(5.0001, 5.0000001, \NumbersPHP\Numbers::EPSILON));
+
+        $this->assertFalse(\NumbersPHP\Basic::numbersEqual(-5, 5, \NumbersPHP\Numbers::EPSILON));
+
+        $this->assertFalse(\NumbersPHP\Basic::numbersEqual(5, 5.1, \NumbersPHP\Numbers::EPSILON));
+
+        $this->assertFalse(\NumbersPHP\Basic::numbersEqual(5, 5.001, \NumbersPHP\Numbers::EPSILON));
     }
 
     /**
