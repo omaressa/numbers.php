@@ -23,8 +23,8 @@ final class Prime
     /**
      * Determine if number is prime.  This is far from high performance.
      *
-     * @param {Number} number to evaluate.
-     * @return {Boolean} return true if value is prime. false otherwise.
+     * @param number number to evaluate.
+     * @return boolean return true if value is prime. false otherwise.
      */
     public static function simple($number)
     {
@@ -47,8 +47,8 @@ final class Prime
      * More info (http://bateru.com/news/2012/05/code-of-the-day-javascript-prime-factors-of-a-number/)
      * Taken from Ratio.js
      *
-     * @param {Number} num
-     * @return {Array} an array of numbers
+     * @param number $number
+     * @return array an array of numbers
      * @example prime.factorization(20).join(',') === "2,2,5"
      **/
     public static function factorization($number = 0)
@@ -77,9 +77,9 @@ final class Prime
      * Determine if a number is prime in Polynomial time, using a randomized algorithm.
      * http://en.wikipedia.org/wiki/Miller-Rabin_primality_test
      *
-     * @param {Number} number to Evaluate.
-     * @param {Number} number to Determine accuracy rate (number of trials) default value = 20.
-     * @return {Boolean} return true if value is prime. false otherwise.
+     * @param number $n number to Evaluate.
+     * @param number $k number to Determine accuracy rate (number of trials) default value = 20.
+     * @return boolean return true if value is prime. false otherwise.
      */
     public static function millerRabin($n, $k = 20)
     {
@@ -124,8 +124,8 @@ final class Prime
     /**
      * Return a list of prime numbers from 1...n, inclusive.
      *
-     * @param {Number} upper limit of test n.
-     * @return {Array} list of values that are prime up to n.
+     * @param number $limit upper limit of test n.
+     * @return array list of values that are prime up to n.
      */
     public static function sieve($limit)
     {
@@ -151,9 +151,9 @@ final class Prime
     /**
      * Determine if two numbers are coprime.
      *
-     * @param {Number} number.
-     * @param {Number} number.
-     * @return {Boolean} whether the values are coprime or not.
+     * @param number number.
+     * @param number number.
+     * @return boolean whether the values are coprime or not.
      */
     public static function coprime($a, $b)
     {
@@ -166,8 +166,8 @@ final class Prime
      * m^k = n
      * http://en.wikipedia.org/wiki/Perfect_power
      *
-     * @param {Number} value in question
-     * @return {Array|Boolean} [m, k] if it is a perfect power, false otherwise
+     * @param number $number value in question
+     * @return array|boolean [m, k] if it is a perfect power, false otherwise
      */
     public static function getPerfectPower($number)
     {
@@ -182,8 +182,8 @@ final class Prime
      * Determine if a number is a prime power and return the prime and the power.
      * http://en.wikipedia.org/wiki/Prime_power
      *
-     * @param {Number} value in question
-     * @return {Array|Boolean}  if it is a prime power, return [prime, power].
+     * @param number $number value in question
+     * @return array|boolean  if it is a prime power, return [prime, power].
      */
     public static function getPrimePower($number)
     {

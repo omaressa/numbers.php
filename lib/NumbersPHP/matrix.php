@@ -24,8 +24,9 @@ final class Matrix
     /**
      * Return a deep copy of the input matrix.
      *
-     * @param array matrix to copy.
-     * @return {Array} copied matrix.
+     * @param array $matrix matrix to copy.
+     * @return array copied matrix.
+     * @throws \Exception
      */
     public static function deepCopy($matrix)
     {
@@ -38,7 +39,8 @@ final class Matrix
     /**
      * Return true if matrix is square, false otherwise.
      *
-     * @param array arr
+     * @param array $matrix
+     * @return bool
      */
     public static function isSquare($matrix)
     {
@@ -50,9 +52,10 @@ final class Matrix
     /**
      * Add two matrices together.  Matrices must be of same dimension.
      *
-     * @param array matrix A.
-     * @param array matrix B.
-     * @return {Array} summed matrix.
+     * @param array $a matrix A.
+     * @param array $b matrix B.
+     * @return array summed matrix.
+     * @throws \Exception
      */
     public static function addition($a, $b)
     {
@@ -71,9 +74,9 @@ final class Matrix
     /**
      * Scalar multiplication on an matrix.
      *
-     * @param array matrix.
-     * @param {Number} scalar.
-     * @return {Array} updated matrix.
+     * @param array $a matrix.
+     * @param number $b scalar.
+     * @return array updated matrix.
      */
     public static function scalar($a, $b)
     {
@@ -92,7 +95,7 @@ final class Matrix
      * Transpose a matrix.
      *
      * @param array matrix.
-     * @return {Array} transposed matrix.
+     * @return array transposed matrix.
      */
     public static function transpose($matrix)
     {
@@ -110,8 +113,8 @@ final class Matrix
     /**
      * Create an identity matrix of dimension n x n.
      *
-     * @param {Number} dimension of the identity array to be returned.
-     * @return {Array} n x n identity matrix.
+     * @param number $dimension dimension of the identity array to be returned.
+     * @return array n x n identity matrix.
      */
     public static function identity($dimension)
     {
@@ -127,9 +130,10 @@ final class Matrix
     /**
      * Evaluate dot product of two vectors.  Vectors must be of same length.
      *
-     * @param array vector.
-     * @param array vector.
-     * @return {Array} dot product.
+     * @param array $a vector.
+     * @param array $b vector.
+     * @return array dot product.
+     * @throws \Exception
      */
     public static function dotproduct($a, $b)
     {
@@ -149,9 +153,10 @@ final class Matrix
      * e.g. A x B = (m x n) x (n x m), where n, m are integers who define
      * the dimensions of matrices A, B.
      *
-     * @param array matrix.
-     * @param array matrix.
-     * @return {Array} result of multiplied matrices.
+     * @param array $a matrix.
+     * @param array $b matrix.
+     * @return array result of multiplied matrices.
+     * @throws \Exception
      */
     public static function multiply($a, $b)
     {
@@ -174,8 +179,9 @@ final class Matrix
      * Evaluate determinate of matrix.  Expect speed
      * degradation for matrices over 4x4.
      *
-     * @param array matrix.
-     * @return {Number} determinant.
+     * @param array $matrix.
+     * @return number determinant.
+     * @throws \Exception
      */
     public static function determinant($matrix)
     {
@@ -217,8 +223,9 @@ final class Matrix
      *
      * matrix.lupDecomposition(array) = [L, U, P]
      *
-     * @param array arr
-     * @return {Array} array of matrices [L, U, P]
+     * @param array $matrix
+     * @return array array of matrices [L, U, P]
+     * @throws \Exception
      */
     public static function lupDecomposition($matrix)
     {
@@ -288,10 +295,11 @@ final class Matrix
     /**
      * Rotate a two dimensional vector by degree.
      *
-     * @param array point.
-     * @param {Number} degree.
-     * @param {String} direction - clockwise or counterclockwise.
-     * @return {Array} vector.
+     * @param array $point point.
+     * @param number $angle degree.
+     * @param string $direction direction - clockwise or counterclockwise.
+     * @return array vector.
+     * @throws \Exception
      */
     public static function rotate($point, $angle, $direction)
     {
@@ -308,10 +316,11 @@ final class Matrix
     /**
      * Scale a two dimensional vector by scale factor x and scale factor y.
      *
-     * @param array point.
-     * @param {Number} sx.
-     * @param {Number} sy.
-     * @return {Array} vector.
+     * @param array $point point.
+     * @param number $x sx.
+     * @param number $y sy.
+     * @return array vector.
+     * @throws \Exception
      */
     public static function scale($point, $x, $y)
     {
@@ -326,10 +335,11 @@ final class Matrix
     /**
      * Shear a two dimensional vector by shear factor k.
      *
-     * @param array point.
-     * @param {Number} k.
-     * @param {String} direction - xaxis or yaxis.
-     * @return {Array} vector.
+     * @param array $point point.
+     * @param number $k k.
+     * @param string $direction direction - xaxis or yaxis.
+     * @return array vector.
+     * @throws \Exception
      */
     public static function shear($point, $k, $direction)
     {
@@ -344,10 +354,11 @@ final class Matrix
     /**
      * Perform an affine transformation on the given vector.
      *
-     * @param array point.
-     * @param {Number} tx.
-     * @param {Number} ty.
-     * @return {Array} vector.
+     * @param array $point point.
+     * @param number $x tx.
+     * @param number $y ty.
+     * @return array vector.
+     * @throws \Exception
      */
     public static function affine($point, $x, $y)
     {
@@ -369,9 +380,10 @@ final class Matrix
      * Scales a row of a matrix by a factor and returns the updated matrix.
      * Used in row reduction functions.
      *
-     * @param array matrix.
-     * @param {Number} row.
-     * @param {Number} scale.
+     * @param array $matrix.
+     * @param number $row.
+     * @param number $scale.
+     * @return array
      */
     public static function rowScale($matrix, $row, $scale)
     {
@@ -394,9 +406,10 @@ final class Matrix
      * Swaps two rows of a matrix  and returns the updated matrix.
      * Used in row reduction functions.
      *
-     * @param array matrix.
-     * @param {Number} row1.
-     * @param {Number} row2.
+     * @param array $matrix.
+     * @param number $row1.
+     * @param number $row2.
+     * @return array
      */
     public static function rowSwitch($matrix, $row1, $row2)
     {
@@ -423,9 +436,11 @@ final class Matrix
      * in a matrix and returns the updated matrix.
      * Used in row reduction functions.
      *
-     * @param array matrix.
-     * @param {Number} row1.
-     * @param {Number} row2.
+     * @param array $matrix
+     * @param number $from
+     * @param number $to
+     * @param number $scale
+     * @return array
      */
     public static function rowAddMultiple($matrix, $from, $to, $scale)
     {

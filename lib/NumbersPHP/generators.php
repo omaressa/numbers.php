@@ -24,8 +24,8 @@ final class Generators
     /**
      * Fast Fibonacci Implementation
      *
-     * @param {Number} number to calculate
-     * @return {Number} nth fibonacci number
+     * @param number number to calculate
+     * @return number nth fibonacci number
      */
     public static function fibonacci($number)
     {
@@ -55,9 +55,9 @@ final class Generators
     /**
      * Populate the given array with a Collatz Sequence.
      *
-     * @param {Number} first number.
-     * @param array arrary to be populated.
-     * @return {Array} array populated with Collatz sequence
+     * @param number $number first number.
+     * @param array $array arrary to be populated.
+     * @return array array populated with Collatz sequence
      */
     public static function collatz($number, &$array)
     {

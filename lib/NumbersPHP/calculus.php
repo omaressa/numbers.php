@@ -25,9 +25,9 @@ final class Calculus
      * Calculate point differential for a specified function at a
      * specified point.  For functions of one variable.
      *
-     * @param {Function} math function to be evaluated.
-     * @param {Number} point to be evaluated.
-     * @return {Number} result.
+     * @param callback $function math function to be evaluated.
+     * @param number $point point to be evaluated.
+     * @return number result.
      */
     public static function pointDiff($function, $point)
     {
@@ -40,14 +40,14 @@ final class Calculus
      * Calculate riemann sum for a specified, one variable, function
      * from a starting point, to a finishing point, with n divisions.
      *
-     * @param {Function} math function to be evaluated.
-     * @param {Number} point to initiate evaluation.
-     * @param {Number} point to complete evaluation.
-     * @param {Number} quantity of divisions.
-     * @param {Function} (Optional) Function that returns which value
+     * @param callback $function math function to be evaluated.
+     * @param number $start point to initiate evaluation.
+     * @param number $finish point to complete evaluation.
+     * @param number $quantity quantity of divisions.
+     * @param callback $sampler (Optional) Function that returns which value
      *   to sample on each interval; if none is provided, left endpoints
      *   will be used.
-     * @return {Number} result.
+     * @return number result.
      */
     public static function riemann($function, $start, $finish, $quantity, $sampler = null)
     {
@@ -69,10 +69,10 @@ final class Calculus
      * Helper function in calculating integral of a function
      * from a to b using simpson quadrature.
      *
-     * @param {Function} math function to be evaluated.
-     * @param {Number} point to initiate evaluation.
-     * @param {Number} point to complete evaluation.
-     * @return {Number} evaluation.
+     * @param callback $function math function to be evaluated.
+     * @param number $a point to initiate evaluation.
+     * @param number $b point to complete evaluation.
+     * @return number evaluation.
      */
     public static function simpsonDef($function, $a, $b)
     {
@@ -86,12 +86,12 @@ final class Calculus
      * from a to b using simpson quadrature.  Manages recursive
      * investigation, handling evaluations within an error bound.
      *
-     * @param {Function} math function to be evaluated.
-     * @param {Number} point to initiate evaluation.
-     * @param {Number} point to complete evaluation.
-     * @param {Number} total value.
-     * @param {Number} Error bound (epsilon).
-     * @return {Number} recursive evaluation of left and right side.
+     * @param callback $function math function to be evaluated.
+     * @param number $a point to initiate evaluation.
+     * @param number $b point to complete evaluation.
+     * @param number $whole total value.
+     * @param number $epsilon Error bound (epsilon).
+     * @return number recursive evaluation of left and right side.
      */
     public static function simpsonRecursive($function, $a, $b, $whole, $epsilon)
     {
@@ -101,19 +101,21 @@ final class Calculus
         if (abs($left + $right - $whole) <= 15 * $epsilon) {
             return $left + $right + ($left + $right - $whole) / 15;
         } else {
-            return self::simpsonRecursive($function, $a, $c, $epsilon / 2, $left) + self::simpsonRecursive($function, $c, $b, $epsilon / 2, $right);
+            $left = self::simpsonRecursive($function, $a, $c, $epsilon / 2, $left);
+            $right = self::simpsonRecursive($function, $c, $b, $epsilon / 2, $right);
+            return $left + $right;
         }
     }
 
     /**
      * Evaluate area under a curve using adaptive simpson quadrature.
      *
-     * @param {Function} math function to be evaluated.
-     * @param {Number} point to initiate evaluation.
-     * @param {Number} point to complete evaluation.
-     * @param {Number} Optional error bound (epsilon);
+     * @param callback $function math function to be evaluated.
+     * @param number $a point to initiate evaluation.
+     * @param number $b point to complete evaluation.
+     * @param float $epsilon Optional error bound (epsilon);
      *   global error bound will be used as a fallback.
-     * @return {Number} area underneath curve.
+     * @return number area underneath curve.
      */
     public static function adaptiveSimpson($function, $a, $b, $epsilon = Numbers::EPSILON)
     {
@@ -124,10 +126,11 @@ final class Calculus
      * Calculate limit of a function at a given point. Can approach from
      * left, middle, or right.
      *
-     * @param {Function} math function to be evaluated.
-     * @param {Number} point to evaluate.
-     * @param {String} approach to limit.
-     * @return {Number} limit.
+     * @param callback $function math function to be evaluated.
+     * @param number $point point to evaluate.
+     * @param string $approach approach to limit.
+     * @return number limit.
+     * @throws \Exception
      */
     public static function limit($function, $point, $approach)
     {
@@ -146,8 +149,8 @@ final class Calculus
     /**
      * Calculate Stirling approximation gamma.
      *
-     * @param {Number} number to calculate.
-     * @return {Number} gamma.
+     * @param number number to calculate.
+     * @return number gamma.
      */
     public static function stirlingGamma($number)
     {
@@ -157,8 +160,8 @@ final class Calculus
     /**
      * Calculate Lanczos approximation gamma.
      *
-     * @param {Number} number to calculate.
-     * @return {Number} gamma.
+     * @param number number to calculate.
+     * @return number gamma.
      */
     public static function lanczosGamma($number)
     {

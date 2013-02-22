@@ -73,7 +73,7 @@ final class Basic
     /**
      * Product of all elements in an array.
      *
-     * @param $array of numbers
+     * @param array $array of numbers
      * @return int product
      * @throws \Exception
      */
@@ -106,8 +106,8 @@ final class Basic
     /**
      * Calculate the binomial coefficient (n choose k)
      *
-     * @param $n    available choices
-     * @param $k    number chosen
+     * @param number $n    available choices
+     * @param number $k    number chosen
      * @return int  number of possible choices
      */
     public static function binomial($n, $k)
@@ -130,7 +130,9 @@ final class Basic
         if (!isset($array[$n])) {
             $array[$n] = array();
         }
-        return $array[$n][$k] = self::binomialRecursive($array, $n - 1, $k - 1) + self::binomialRecursive($array, $n - 1, $k);
+        $left = self::binomialRecursive($array, $n - 1, $k - 1);
+        $right = self::binomialRecursive($array, $n - 1, $k);
+        return $array[$n][$k] = $left + $right;
     }
 
     /**
@@ -183,10 +185,11 @@ final class Basic
     /**
      * Retrieve a specified quantity of elements from an array, at random.
      *
-     * @param array set of values to select from.
-     * @param {Number} quantity of elements to retrieve.
-     * @param {Boolean} allow the same number to be returned twice.
-     * @return {Array} random elements.
+     * @param array $array set of values to select from.
+     * @param number $quantity quantity of elements to retrieve.
+     * @param boolean $allowDuplicates allow the same number to be returned twice.
+     * @return array random elements.
+     * @throws \Exception
      */
     public static function random($array, $quantity, $allowDuplicates)
     {
@@ -212,7 +215,7 @@ final class Basic
      * Shuffle an array, in place.
      *
      * @param array array to be shuffled.
-     * @return {Array} shuffled array.
+     * @return array shuffled array.
      */
     public static function shuffle($array)
     {
@@ -224,7 +227,7 @@ final class Basic
      * Find maximum value in an array.
      *
      * @param array array to be traversed.
-     * @return {Number} maximum value in the array.
+     * @return number maximum value in the array.
      */
     public static function max($array)
     {
@@ -235,7 +238,7 @@ final class Basic
      * Find minimum value in an array.
      *
      * @param array array to be traversed.
-     * @return {Number} minimum value in the array.
+     * @return number minimum value in the array.
      */
     public static function min($array)
     {
@@ -245,9 +248,10 @@ final class Basic
     /**
      * Create a range of numbers.
      *
-     * @param {Number} The start of the range.
-     * @param {Number} The end of the range.
-     * @return {Array} An array containing numbers within the range.
+     * @param number $start The start of the range.
+     * @param number $stop The end of the range.
+     * @param number $step
+     * @return array An array containing numbers within the range.
      */
     public static function range($start = 0, $stop = null, $step = 1)
     {
@@ -269,8 +273,8 @@ final class Basic
     /**
      * Determine if the number is an integer.
      *
-     * @param {Number} the number
-     * @return {Boolean} true for int, false for not int.
+     * @param number $number the number
+     * @return boolean true for int, false for not int.
      */
     public static function isInt($number)
     {
@@ -284,9 +288,9 @@ final class Basic
     /**
      * Calculate the divisor and modulus of two integers.
      *
-     * @param {Number} int a.
-     * @param {Number} int b.
-     * @return {Array} [div, mod].
+     * @param number int a.
+     * @param number int b.
+     * @return array [div, mod].
      */
     public static function divMod($a, $b)
     {
@@ -303,10 +307,10 @@ final class Basic
      * if b = -1: modInverse(a, m).
      * if b < 1: finds a modular rth root of a such that b = 1/r.
      *
-     * @param {Number} Number a.
-     * @param {Number} Number b.
-     * @param {Number} Modulo m.
-     * @return {Number} see the above documentation for return values.
+     * @param number $a Number a.
+     * @param number $b Number b.
+     * @param number $m Modulo m.
+     * @return number see the above documentation for return values.
      */
     public static function powerMod($a, $b, $m)
     {
@@ -339,9 +343,9 @@ final class Basic
     /**
      * Calculate the extended Euclid Algorithm or extended GCD.
      *
-     * @param {Number} int a.
-     * @param {Number} int b.
-     * @return {Array} [a, x, y] a is the GCD. x and y are the values such that ax + by = gcd(a, b) .
+     * @param number int a.
+     * @param number int b.
+     * @return array [a, x, y] a is the GCD. x and y are the values such that ax + by = gcd(a, b) .
      */
     public static function egcd($a, $b)
     {
@@ -368,9 +372,9 @@ final class Basic
     /**
      * Calculate the modular inverse of a number.
      *
-     * @param {Number} Number a.
-     * @param {Number} Modulo m.
-     * @return {Number} if true, return number, else throw error.
+     * @param number $a Number a.
+     * @param number $m Modulo m.
+     * @return number if true, return number, else throw error.
      */
     public static function modInverse($a, $m)
     {
@@ -384,9 +388,10 @@ final class Basic
     /**
      * Determine is two numbers are equal within a given margin of precision.
      *
-     * @param {Number} first number.
-     * @param {Number} second number.
-     * @param {Number} epsilon.
+     * @param number $first first number.
+     * @param number $second second number.
+     * @param float $epsilon epsilon.
+     * @return bool
      */
     public static function numbersEqual($first, $second, $epsilon = Numbers::EPSILON)
     {
@@ -399,9 +404,10 @@ final class Basic
      *
      * {@see http://mathworld.wolfram.com/FallingFactorial.html}
      *
-     * @param {Number} Base
-     * @param {Number} Steps to fall
-     * @returns {Number} Result
+     * @param number $n base
+     * @param number $k Steps to fall
+     * @return int Result
+     * @throws \Exception
      */
     public static function fallingFactorial($n, $k)
     {

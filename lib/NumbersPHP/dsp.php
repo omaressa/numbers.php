@@ -25,10 +25,10 @@ final class DSP
      * Returns an array composed of elements from arr, starting at index start
      * and counting by step.
      *
-     * @param array Input array.
-     * @param {Number} Starting array index.
-     * @param {Number} Step size.
-     * @return {Array} Resulting sub-array.
+     * @param array $array Input array.
+     * @param number $start Starting array index.
+     * @param number $step Step size.
+     * @return array Resulting sub-array.
      */
     public static function segment($array, $start, $step)
     {
@@ -44,8 +44,9 @@ final class DSP
      * of real valued time domain sequence array. (count($array) must be integer power of 2)
      * Inspired by http://rosettacode.org/wiki/Fast_Fourier_transform#Python
      *
-     * @param array Real-valued series input, eg. time-series.
-     * @return {Array} Array of complex numbers representing input signal in Fourier domain.
+     * @param array $array Real-valued series input, eg. time-series.
+     * @return array Array of complex numbers representing input signal in Fourier domain.
+     * @throws \Exception
      */
     public static function fft($array)
     {

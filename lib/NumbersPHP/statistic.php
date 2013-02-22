@@ -24,8 +24,8 @@ final class Statistic
     /**
      * Calculate the mean value of a set of numbers in array.
      *
-     * @param array set of values.
-     * @return {Number} mean value.
+     * @param array $array set of values.
+     * @return number mean value.
      */
     public static function mean($array)
     {
@@ -37,8 +37,8 @@ final class Statistic
     /**
      * Calculate the median value of a set of numbers in array.
      *
-     * @param array set of values.
-     * @return {Number} median value.
+     * @param array $array set of values.
+     * @return number median value.
      */
     public static function median($array)
     {
@@ -48,8 +48,8 @@ final class Statistic
     /**
      * Calculate the mode value of a set of numbers in array.
      *
-     * @param array set of values.
-     * @return {Number} mode value.
+     * @param array $array set of values.
+     * @return number mode value.
      */
     public static function mode($array)
     {
@@ -72,10 +72,10 @@ final class Statistic
      * Ex: Median is 1st 2-quantile
      * Ex: Upper quartile is 3rd 4-quantile
      *
-     * @param array set of values.
-     * @param {Number} index of quantile.
-     * @param {Number} number of quantiles.
-     * @return {Number} kth q-quantile of values.
+     * @param array $array set of values.
+     * @param number $k index of quantile.
+     * @param number $q number of quantiles.
+     * @return number kth q-quantile of values.
      */
     public static function quantile($array, $k, $q)
     {
@@ -113,10 +113,10 @@ final class Statistic
      * Return a random sample of values over a set of bounds with
      * a specified quantity.
      *
-     * @param {Number} lower bound.
-     * @param {Number} upper bound.
-     * @param {Number} quantity of elements in random sample.
-     * @return {Array} random sample.
+     * @param number $lower lower bound.
+     * @param number $upper upper bound.
+     * @param number $quantity quantity of elements in random sample.
+     * @return array random sample.
      */
     public static function randomSample($lower, $upper, $quantity)
     {
@@ -131,8 +131,8 @@ final class Statistic
     /**
      * Evaluate the standard deviation for a set of values.
      *
-     * @param array set of values.
-     * @return {Number} standard deviation.
+     * @param array $array set of values.
+     * @return number standard deviation.
      */
     public static function standardDev($array)
     {
@@ -147,8 +147,10 @@ final class Statistic
     /**
      * Evaluate the correlation amongst a set of values.
      *
-     * @param array set of values.
-     * @return {Number} correlation.
+     * @param array $array1
+     * @param array $array2
+     * @return float number correlation.
+     * @throws \Exception
      */
     public static function correlation($array1, $array2)
     {
@@ -161,22 +163,34 @@ final class Statistic
     /**
      * Calculate the Coefficient of Determination of a dataset and regression line.
      *
-     * @param array Source data.
-     * @param array Regression data.
-     * @return {Number} A number between 0 and 1.0 that represents how well the regression line fits the data.
+     * @param array $source Source data.
+     * @param array $regression Regression data.
+     * @return number A number between 0 and 1.0 that represents how well the regression line fits the data.
      */
     public static function rSquared($source, $regression)
     {
-        $residualSumOfSquares = Basic::sum(array_map(create_function('$source, $regression', 'return pow($source - $regression, 2);'), $source, $regression));
-        $totalSumOfSquares = Basic::sum(array_map(create_function('$source', 'return pow($source - ' . self::mean($source) . ', 2);'), $source));
+        $residualSumOfSquares = Basic::sum(
+            array_map(
+                create_function('$source, $regression', 'return pow($source - $regression, 2);'),
+                $source,
+                $regression
+            )
+        );
+        $totalSumOfSquares = Basic::sum(
+            array_map(
+                create_function('$source', 'return pow($source - ' . self::mean($source) . ', 2);'),
+                $source
+            )
+        );
         return 1 - ($residualSumOfSquares / $totalSumOfSquares);
     }
 
     /**
      * Create a function to calculate the exponential regression of a dataset.
      *
-     * @param array set of values.
-     * @return {Array} a function to accept X values and return corresponding regression Y values and a coefficient of determination
+     * @param array $arrayY set of values.
+     * @return array a function to accept X values and
+     * return corresponding regression Y values and a coefficient of determination
      */
     public static function exponentialRegression($arrayY)
     {
@@ -192,14 +206,15 @@ final class Statistic
         $a = ($yLogSum * $xSquaredSum - $xSum * $xyLogSum) / ($arrayLength * $xSquaredSum - $xSum * $xSum);
         $b = ($arrayLength * $xyLogSum - $xSum * $yLogSum) / ($arrayLength * $xSquaredSum - $xSum * $xSum);
 
-        $function = create_function('$x',
+        $function = create_function(
+            '$x',
             'if(is_array($x)) {' .
-                'foreach($x as &$value)' .
-                '$value = exp(' . $a . ') * exp(' . $b . ' * $value);' .
-                'return $x;' .
-                '}' .
-                'else ' .
-                'return exp(' . $a . ') * exp(' . $b . ' * $x);'
+            'foreach($x as &$value)' .
+            '$value = exp(' . $a . ') * exp(' . $b . ' * $value);' .
+            'return $x;' .
+            '}' .
+            'else ' .
+            'return exp(' . $a . ') * exp(' . $b . ' * $x);'
         );
 
         return array($function, self::rSquared($arrayY, array_map($function, $arrayX)));
@@ -208,9 +223,9 @@ final class Statistic
     /**
      * Create a function to calculate the linear regression of a dataset.
      *
-     * @param array X array.
-     * @param array Y array.
-     * @return {Function} A function which given X or array of X values will return Y.
+     * @param array $arrayX X array.
+     * @param array $arrayY Y array.
+     * @return callback A function which given X or array of X values will return Y.
      */
     public static function linearRegression($arrayX, $arrayY)
     {
@@ -225,23 +240,25 @@ final class Statistic
         $b = ($xySum - 1 / $arrayLength * $xSum * $ySum) / ($xSquaredSum - 1 / $arrayLength * $xSum * $xSum);
         $a = $yMean - $b * $xMean;
 
-        return create_function('$x',
+        return create_function(
+            '$x',
             'if(is_array($x)) {' .
-                'foreach($x as &$value)' .
-                '$value = ' . $a . ' + ' . $b . ' * $value;' .
-                'return $x;' .
-                '}' .
-                'else ' .
-                'return ' . $a . ' + ' . $b . ' * $x;'
+            'foreach($x as &$value)' .
+            '$value = ' . $a . ' + ' . $b . ' * $value;' .
+            'return $x;' .
+            '}' .
+            'else ' .
+            'return ' . $a . ' + ' . $b . ' * $x;'
         );
     }
 
     /**
      * Evaluate the covariance amongst 2 sets.
      *
-     * @param array set 1 of values.
-     * @param array set 2 of values.
-     * @return {Number} covariance.
+     * @param array $array1 set 1 of values.
+     * @param array $array2 set 2 of values.
+     * @return number covariance.
+     * @throws \Exception
      */
     public static function covariance($array1, $array2)
     {

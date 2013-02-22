@@ -23,7 +23,7 @@ namespace NumbersPHP;
 final class Numbers
 {
     /**
-     * @constant {Number} EPSILON Epsilon (error bound) to be used
+     * @constant number EPSILON Epsilon (error bound) to be used
      * in calculations.
      */
     const EPSILON = 0.001;

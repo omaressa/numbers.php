@@ -48,8 +48,8 @@ final class Complex
     /**
      * Add a complex number to this one.
      *
-     * @param {Complex} Number to add.
-     * @return {Complex} New complex number (sum).
+     * @param Complex Number to add.
+     * @return Complex New complex number (sum).
      */
     public function add($addend)
     {
@@ -59,8 +59,8 @@ final class Complex
     /**
      * Subtract a complex number from this one.
      *
-     * @param {Complex} Number to subtract.
-     * @return {Complex} New complex number (difference).
+     * @param Complex Number to subtract.
+     * @return Complex New complex number (difference).
      */
     public function subtract($subtrahend)
     {
@@ -70,8 +70,8 @@ final class Complex
     /**
      * Multiply a complex number with this one.
      *
-     * @param {Complex} Number to multiply by.
-     * @return {Complex} New complex number (product).
+     * @param Complex Number to multiply by.
+     * @return Complex New complex number (product).
      */
     public function multiply($multiplier)
     {
@@ -84,8 +84,8 @@ final class Complex
     /**
      * Divide this number with another complex number.
      *
-     * @param {Complex} Divisor.
-     * @return {Complex} New complex number (quotient).
+     * @param Complex $divisor Divisor.
+     * @return Complex New complex number (quotient).
      */
     public function divide($divisor)
     {
@@ -99,7 +99,7 @@ final class Complex
     /**
      * Get the magnitude of this number.
      *
-     * @return {Number} Magnitude.
+     * @return number Magnitude.
      */
     public function magnitude()
     {
@@ -109,7 +109,7 @@ final class Complex
     /**
      * Get the phase of this number.
      *
-     * @return {Number} Phase.
+     * @return number Phase.
      */
     public function phase()
     {
@@ -119,7 +119,7 @@ final class Complex
     /**
      * Conjugate the imaginary part
      *
-     * @return {Complex} Conjugated number
+     * @return Complex Conjugated number
      */
     public function conjugate()
     {
@@ -130,7 +130,7 @@ final class Complex
      * Raises this complex number to the nth power.
      *
      * @param {number} power to raise this complex number to.
-     * @return {Complex} the nth power of this complex number.
+     * @return Complex the nth power of this complex number.
      */
     public function pow($power)
     {
@@ -141,8 +141,8 @@ final class Complex
     /**
      * Raises this complex number to given complex power.
      *
-     * @param complexN the complex number to raise this complex number to.
-     * @return {Complex} this complex number raised to the given complex number.
+     * @param Complex $power $power the complex number to raise this complex number to.
+     * @return Complex this complex number raised to the given complex number.
      */
     public function complexPow($power)
     {
@@ -155,8 +155,8 @@ final class Complex
     /**
      * Find all the nth roots of this complex number.
      *
-     * @param {Number} root of this complex number to take.
-     * @return {Array} an array of size $root with the roots of this complex number.
+     * @param number $root root of this complex number to take.
+     * @return array an array of size $root with the roots of this complex number.
      */
     public function roots($root)
     {
@@ -172,7 +172,7 @@ final class Complex
     /**
      * Returns the sine of this complex number.
      *
-     * @return {Complex} the sine of this complex number.
+     * @return Complex the sine of this complex number.
      */
     public function sin()
     {
@@ -186,7 +186,7 @@ final class Complex
     /**
      * Returns the cosine of this complex number.
      *
-     * @return {Complex} the cosine of this complex number.
+     * @return Complex the cosine of this complex number.
      */
     public function cos()
     {
@@ -200,7 +200,7 @@ final class Complex
     /**
      * Returns the tangent of this complex number.
      *
-     * @return {Complex} the tangent of this complex number.
+     * @return Complex the tangent of this complex number.
      */
     public function tan()
     {
@@ -211,9 +211,9 @@ final class Complex
      * Checks for equality between this complex number and another
      * within a given range defined by epsilon.
      *
-     * @param {Complex} complex number to check this number against.
-     * @param {Number} epsilon
-     * @return {boolean} true if equal within epsilon, false otherwise
+     * @param Complex $complex complex number to check this number against.
+     * @param float $epsilon
+     * @return bool true if equal within epsilon, false otherwise
      */
     public function equals($complex, $epsilon = Numbers::EPSILON)
     {
