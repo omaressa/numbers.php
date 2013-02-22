@@ -30,49 +30,110 @@ class BasicTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers NumbersPHP\Basic::sum
-     * @todo   Implement testSum().
      */
     public function testSum()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+        $this->assertEquals(
+            6,
+            \NumbersPHP\Basic::sum(array(0, 1, 2, 3))
+        );
+
+        $this->assertEquals(
+            0,
+            \NumbersPHP\Basic::sum(array(0, -3, 5, -2))
+        );
+    }
+
+    /**
+     * @covers NumbersPHP\Basic::sum
+     * @expectedException \Exception
+     */
+    public function testSumOne()
+    {
+        \NumbersPHP\Basic::sum(1);
+    }
+
+    /**
+     * @covers NumbersPHP\Basic::sum
+     * @expectedException \Exception
+     */
+    public function testSumString()
+    {
+        \NumbersPHP\Basic::sum(array(1, 2, 'error'));
+    }
+
+    /**
+     * @covers NumbersPHP\Basic::subtraction
+     */
+    public function testSubtraction()
+    {
+        $this->assertEquals(
+            2,
+            \NumbersPHP\Basic::subtraction(array(5, 3, 1, -1))
         );
     }
 
     /**
      * @covers NumbersPHP\Basic::subtraction
-     * @todo   Implement testSubtraction().
+     * @expectedException \Exception
      */
-    public function testSubtraction()
+    public function testSubtractionOne()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        \NumbersPHP\Basic::subtraction(1);
+    }
+
+    /**
+     * @covers NumbersPHP\Basic::subtraction
+     * @expectedException \Exception
+     */
+    public function testSubtractionString()
+    {
+        \NumbersPHP\Basic::subtraction(array('test', 1, 1, 2));
     }
 
     /**
      * @covers NumbersPHP\Basic::product
-     * @todo   Implement testProduct().
      */
     public function testProduct()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+        $this->assertEquals(
+            24,
+            \NumbersPHP\Basic::product(array(1, 2, 3, 4))
         );
+
+        $this->assertEquals(
+            -6,
+            \NumbersPHP\Basic::product(array(-3, 2))
+        );
+
+    }
+
+    /**
+     * @covers NumbersPHP\Basic::product
+     * @expectedException \Exception
+     */
+    public function testProductOne()
+    {
+        \NumbersPHP\Basic::product(1);
+    }
+
+    /**
+     * @covers NumbersPHP\Basic::product
+     * @expectedException \Exception
+     */
+    public function testProductStrings()
+    {
+        \NumbersPHP\Basic::product(array('error', 1, 2));
     }
 
     /**
      * @covers NumbersPHP\Basic::square
-     * @todo   Implement testSquare().
      */
     public function testSquare()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+        $this->assertEquals(
+            16,
+            \NumbersPHP\Basic::square(4)
         );
     }
 
@@ -140,25 +201,51 @@ class BasicTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers NumbersPHP\Basic::random
-     * @todo   Implement testRandom().
      */
     public function testRandom()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+        $this->assertEquals(
+            5,
+            count(\NumbersPHP\Basic::random(array(10, 20, 30, 40, 50, 60, 70), 5, true)),
+            'random should return a specified quantity of elements from an array, at random'
+        );
+
+        $this->assertEquals(
+            5,
+            count(\NumbersPHP\Basic::random(array(10, 20, 30, 40, 50, 60, 70), 5, false)),
+            'random should return a specified quantity of elements from an array, at random w/o duplicates'
         );
     }
 
     /**
+     * @covers NumbersPHP\Basic::random
+     * @expectedException \Exception
+     */
+    public function testRandomSize1()
+    {
+        \NumbersPHP\Basic::random(array(), 0, false);
+    }
+
+    /**
+     * @covers NumbersPHP\Basic::random
+     * @expectedException \Exception
+     */
+    public function testRandomSize2()
+    {
+        \NumbersPHP\Basic::random(array(10, 20), 5, false);
+    }
+
+    /**
      * @covers NumbersPHP\Basic::shuffle
-     * @todo   Implement testShuffle().
      */
     public function testShuffle()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+        $this->assertTrue(
+            arrays_are_similar(
+                array(10, 20, 30, 40, 50, 60, 70),
+                \NumbersPHP\Basic::shuffle(array(10, 20, 30, 40, 50, 60, 70))
+            ),
+            'shuffle should return a different version of input array'
         );
     }
 
@@ -189,15 +276,36 @@ class BasicTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers NumbersPHP\Basic::range
-     * @todo   Implement testRange().
      */
     public function testRange()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+        $msg = 'range should return an appropriate range for the given start, stop, and step parameters';
+
+        $this->assertEquals(
+            array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+            \NumbersPHP\Basic::range(1, 10),
+            $msg
         );
+
+        $this->assertEquals(
+            array(10, 9, 8, 7, 6, 5, 4, 3, 2, 1),
+            \NumbersPHP\Basic::range(10, 1),
+            $msg
+        );
+
+        $this->assertEquals(
+            array(1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5),
+            \NumbersPHP\Basic::range(1, 5, 0.5),
+            $msg
+        );
+
+         $this->assertEquals(
+             array(5, 4.5, 4, 3.5, 3, 2.5, 2, 1.5, 1),
+             \NumbersPHP\Basic::range(5, 1, 0.5),
+             $msg
+         );
     }
+
 
     /**
      * @covers NumbersPHP\Basic::isInt
@@ -256,7 +364,7 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            455,
+            445,
             \NumbersPHP\Basic::powerMod(4, 13, 497)
         );
     }
