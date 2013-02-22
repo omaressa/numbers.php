@@ -93,6 +93,9 @@ Statistic::correlation($array1, $array2);
 To test, open /test/index.php.
 
 ## Authors
+
+### Numbers.js
+
 * Steve Kaliski - [@sjkaliski](http://twitter.com/sjkaliski)
 * David Byrd - [@davidbyrd11](http://twitter.com/davidbyrd11)
 * Ethan Resnick - [@studip101](http://twitter.com/studip101)
@@ -111,4 +114,9 @@ To test, open /test/index.php.
 * [Philip I. Thomas aka `philipithomas`](https://github.com/philipithomas)
 * [Brandon Benvie aka `Benvie`](https://github.com/Benvie)
 * [Larry Battle aka `LarryBattle`](https://github.com/LarryBattle)
-* [Powder96](https://github.com/powder96/)
+* [`kmcgrane`](https://github.com/kmcgrane)
+
+### Numbers.php
+
+* [`powder96`](https://github.com/powder96/)
+* [`geopal-solutions`](https://github.com/geopal-solutions/)
