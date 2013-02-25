@@ -21,7 +21,14 @@ namespace NumbersPHP;
 
 final class Complex
 {
+    /**
+     * @var float
+     */
     public $real;
+
+    /**
+     * @var float
+     */
     public $imaginary;
 
     /**
@@ -43,6 +50,22 @@ final class Complex
     public function __toString()
     {
         return 'Complex(' . $this->real . ', ' . $this->imaginary . ')';
+    }
+
+    /**
+     * @return float
+     */
+    public function getReal()
+    {
+        return $this->real;
+    }
+
+    /**
+     * @return float
+     */
+    public function getImaginary()
+    {
+        return $this->imaginary;
     }
 
     /**
