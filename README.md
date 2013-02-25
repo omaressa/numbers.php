@@ -98,14 +98,14 @@ Download and install these things:
 * [Composer PHAR](http://getcomposer.org/composer.phar)
 * [PHPUnit PHAR](http://pear.phpunit.de/get/phpunit.phar)
 
-Run in command prompt:
+Run in the command prompt:
 
 ```cmd
 	php composer.phar install
 	php phpunit.phar --configuration phpunit.xml.dist
 ```
 
-If you are going to run tests multiple times and you are using Microsoft(R) Windows(TM), you can use batch file /test.cmd. Do not forget to set path of the PHP, Composer, and PHPUnit in the beginnig of that file. 
+If you are going to run tests multiple times and you are using Microsoft(R) Windows(TM), you can use the batch file /test.cmd. Do not forget to set the path to PHP, Composer, and PHPUnit in the beginnig of that file. 
 
 ## Authors
 
