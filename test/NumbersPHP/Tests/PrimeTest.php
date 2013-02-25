@@ -52,11 +52,6 @@ class PrimeTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactorization()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-        /*
         $results[] = \NumbersPHP\Prime::factorization(INF);
         $results[] = \NumbersPHP\Prime::factorization();
         $results[] = \NumbersPHP\Prime::factorization(null);
@@ -66,6 +61,7 @@ class PrimeTest extends \PHPUnit_Framework_TestCase
         foreach ($results as $result) {
             $this->assertTrue(empty($result));
         }
+        unset($results);
 
         $results[] = array(\NumbersPHP\Prime::factorization(2), 2);
         $results[] = array(\NumbersPHP\Prime::factorization(6), 2, 3);
@@ -78,7 +74,6 @@ class PrimeTest extends \PHPUnit_Framework_TestCase
         foreach ($results as $result) {
             $this->assertEquals(array_slice($result, 1), $result[0]);
         }
-        */
     }
 
     /**

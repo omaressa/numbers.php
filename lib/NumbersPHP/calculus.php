@@ -74,7 +74,7 @@ final class Calculus
      * @param number $b point to complete evaluation.
      * @return number evaluation.
      */
-    public static function simpsonDef($function, $a, $b)
+    private static function simpsonDef($function, $a, $b)
     {
         $c = ($a + $b) / 2;
         $d = abs($b - $a) / 6;
@@ -93,7 +93,7 @@ final class Calculus
      * @param number $epsilon Error bound (epsilon).
      * @return number recursive evaluation of left and right side.
      */
-    public static function simpsonRecursive($function, $a, $b, $whole, $epsilon)
+    private static function simpsonRecursive($function, $a, $b, $whole, $epsilon)
     {
         $c = $a + $b;
         $left = self::simpsonDef($function, $a, $c);

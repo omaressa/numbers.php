@@ -61,30 +61,6 @@ class CalculusTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers NumbersPHP\Calculus::simpsonDef
-     * @todo   Implement testSimpsonDef().
-     */
-    public function testSimpsonDef()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers NumbersPHP\Calculus::simpsonRecursive
-     * @todo   Implement testSimpsonRecursive().
-     */
-    public function testSimpsonRecursive()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
-
-    /**
      * @covers NumbersPHP\Calculus::adaptiveSimpson
      */
     public function testAdaptiveSimpson()
