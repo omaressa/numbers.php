@@ -1,9 +1,9 @@
 {
-    "name": "geopal-solutions/NumbersPHP",
+    "name": "powder96/NumbersPHP",
     "type": "library",
     "description": "Advanced Mathematics Library for PHP (port of Numbers.js)",
     "keywords": ["math", "mathematics", "numbers", "arithmetic", "statistics"],
-    "homepage": "https://github.com/geopal-solutions/numbers.php",
+    "homepage": "https://github.com/powder96/numbers.php",
     "license": "Apache-2.0",
     "require": {
         "php": ">=5.3.0"

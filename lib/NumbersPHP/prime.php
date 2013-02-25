@@ -100,7 +100,12 @@ final class Prime
             $d = $divMod[0];
         }
         for ($i = 0; $i < $k; ++$i) {
-            $a = floor(mt_rand(2, $n - 2));
+            if (($n - 2) > 2) {
+                $a = floor(mt_rand(2, $n - 2));
+            }
+            else {
+                $a = floor(mt_rand($n - 2, 2));
+            }
             if (self::millerRabinTryComposite($a, $s, $d, $n)) {
                 return false;
             }

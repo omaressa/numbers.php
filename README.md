@@ -1,9 +1,11 @@
 # Numbers.php
 [Numbers.php](https://github.com/powder96/numbers.php/) - an advanced mathematics toolkit for PHP >= 5.3. It is a port of [Numbers.js](https://github.com/sjkaliski/numbers.js/) - same toolkit for JavaScript.
 
+There is a version of Numbers.php which supports PHP 5.2, but it is no longer developed: https://github.com/powder96/numbers.php/archive/fd946ea8742ba46789dc2a38cc6c1f93a7512e6d.zip
+
 ## Description
 
-Numbers.php provides a comprehensive set of mathematical tools that currently are not offered in PHP.  These tools include:
+Numbers.php provides a comprehensive set of mathematical tools that currently are not offered in PHP. These tools include:
 
 * Basic calculations
 * Calculus
@@ -93,22 +95,30 @@ Statistic::correlation($array1, $array2);
 To test, open /test/index.php.
 
 ## Authors
-* Steve Kaliski - [@sjkaliski](http://twitter.com/sjkaliski)
-* David Byrd - [@davidbyrd11](http://twitter.com/davidbyrd11)
-* Ethan Resnick - [@studip101](http://twitter.com/studip101)
-* [Ethan aka `altercation`](https://github.com/altercation)
-* [Hrishikesh Paranjape aka `hrishikeshparanjape`](https://github.com/hrishikeshparanjape)
-* [Greg Leppert aka `leppert`](https://github.com/leppert)
-* [Lars-Magnus Skog aka `ralphtheninja`](https://github.com/ralphtheninja)
-* [Tim Wood aka `codearachnid`](https://github.com/codearachnid)
-* [Miles McCrocklin aka `milroc`](https://github.com/milroc)
-* [Nate Kohari aka `nkohari`](https://github.com/nkohari)
-* [Eric LaForce aka `elaforc`](https://github.com/elaforc)
-* [Kartik Talwar aka `KartikTalwar`](https://github.com/KartikTalwar)
-* [btmills aka `btmills`](https://github.com/btmills)
-* [swair shah aka `swairshah`](https://github.com/swairshah)
-* [Jason Hutchinson aka `Zikes`](https://github.com/Zikes)
-* [Philip I. Thomas aka `philipithomas`](https://github.com/philipithomas)
-* [Brandon Benvie aka `Benvie`](https://github.com/Benvie)
-* [Larry Battle aka `LarryBattle`](https://github.com/LarryBattle)
-* [Powder96](https://github.com/powder96/)
+
+### Numbers.js
+
+* Steve Kaliski - [sjkaliski](http://twitter.com/sjkaliski)
+* David Byrd - [davidbyrd11](http://twitter.com/davidbyrd11)
+* Ethan Resnick - [studip101](http://twitter.com/studip101)
+* Ethan - [altercation](https://github.com/altercation)
+* Hrishikesh Paranjape - [hrishikeshparanjape](https://github.com/hrishikeshparanjape)
+* Greg Leppert - [leppert](https://github.com/leppert)
+* Lars-Magnus Skog - [ralphtheninja](https://github.com/ralphtheninja)
+* Tim Wood - [codearachnid](https://github.com/codearachnid)
+* Miles McCrocklin - [milroc](https://github.com/milroc)
+* Nate Kohari - [nkohari](https://github.com/nkohari)
+* Eric LaForce - [elaforc](https://github.com/elaforc)
+* Kartik Talwar - [KartikTalwar](https://github.com/KartikTalwar)
+* [btmills](https://github.com/btmills)
+* swair shah - [swairshah](https://github.com/swairshah)
+* Jason Hutchinson - [Zikes](https://github.com/Zikes)
+* Philip I. Thomas - [philipithomas](https://github.com/philipithomas)
+* Brandon Benvie - [Benvie](https://github.com/Benvie)
+* Larry Battle - [LarryBattle](https://github.com/LarryBattle)
+* [kmcgrane](https://github.com/kmcgrane)
+
+### Numbers.php
+
+* [powder96](https://github.com/powder96/)
+* [geopal-solutions](https://github.com/geopal-solutions/)
