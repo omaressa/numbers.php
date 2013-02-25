@@ -92,7 +92,20 @@ Statistic::correlation($array1, $array2);
 
 ## Test
 
-To test, open /test/index.php.
+Download and install these things:
+
+* [PHP >= 5.3](http://php.net/)
+* [Composer PHAR](http://getcomposer.org/composer.phar)
+* [PHPUnit PHAR](http://pear.phpunit.de/get/phpunit.phar)
+
+Run in command prompt:
+
+```cmd
+	php composer.phar install
+	php phpunit.phar --configuration phpunit.xml.dist
+```
+
+If you are going to run tests multiple times and you are using Microsoft(R) Windows(TM), you can use batch file /test.cmd. Do not forget to set path of the PHP, Composer, and PHPUnit in the beginnig of that file. 
 
 ## Authors
 
