@@ -40,7 +40,6 @@ class DSPTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers NumbersPHP\DSP::fft
-     * @todo   Implement testFft().
      */
     public function testFft()
     {

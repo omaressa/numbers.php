@@ -32,14 +32,11 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers NumbersPHP\Complex::__toString
-     * @todo   Implement test__toString().
      */
     public function test__toString()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+        $a = new \NumbersPHP\Complex(3, 4);
+        $this->assertEquals('Complex(3, 4)', $a->__toString());
     }
 
     /**
