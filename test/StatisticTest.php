@@ -30,145 +30,172 @@ class StatisticTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers NumbersPHP\Statistic::mean
-     * @todo   Implement testMean().
      */
     public function testMean()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+        $this->assertEquals(1, \NumbersPHP\Statistic::mean(array(0, 1, 2)));
     }
 
     /**
      * @covers NumbersPHP\Statistic::median
-     * @todo   Implement testMedian().
      */
     public function testMedian()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+        $this->assertEquals(2, \NumbersPHP\Statistic::median(array(0, 2, 15)));
+
+        $this->assertEquals(1, \NumbersPHP\Statistic::median(array(1, 0, 2)));
+
+        $this->assertEquals(1.5, \NumbersPHP\Statistic::median(array(0, 1, 2, 3)));
+
+        $this->assertEquals(1.5, \NumbersPHP\Statistic::median(array(1, 3, 2, 0)));
     }
 
     /**
      * @covers NumbersPHP\Statistic::mode
-     * @todo   Implement testMode().
      */
     public function testMode()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+        $this->assertEquals(1, \NumbersPHP\Statistic::mode(array(0, 1, 1, 1, 2, 4, 6)));
     }
 
     /**
      * @covers NumbersPHP\Statistic::quantile
-     * @todo   Implement testQuantile().
      */
     public function testQuantile()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+        $this->assertEquals(2, \NumbersPHP\Statistic::quantile(array(5, 2, 4), 0, 1));
+
+        $this->assertEquals(5, \NumbersPHP\Statistic::quantile(array(5, 2, 4), 6, 6));
+
+        $this->assertEquals(5, \NumbersPHP\Statistic::quantile(array(9, 1, 1, 9), 2, 4));
+
+        $this->assertEquals(7, \NumbersPHP\Statistic::quantile(array(3, 6, 7, 8, 8, 9, 10, 13, 15, 16, 20), 1, 4));
     }
 
     /**
      * @covers NumbersPHP\Statistic::report
-     * @todo   Implement testReport().
      */
     public function testReport()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+        $report = \NumbersPHP\Statistic::report(array(-5, -4, -1, 0, 5, 100));
+        $this->assertEquals(15.8333333333, $report['mean']);
+
+        $this->assertEquals(-4, $report['firstQuartile']);
+
+        $this->assertEquals(-0.5, $report['median']);
+
+        $this->assertEquals(5, $report['thirdQuartile']);
+
+        $this->assertEquals(37.777491829, $report['standardDev']);
     }
 
     /**
      * @covers NumbersPHP\Statistic::randomSample
-     * @todo   Implement testRandomSample().
      */
     public function testRandomSample()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+        $lower = 5;
+        $upper = 100;
+        $samples = 5;
+        $result = \NumbersPHP\Statistic::randomSample($lower, $upper, $samples);
+        $this->assertEquals($samples, count($result));
+
+        foreach ($result as $number) {
+            $this->assertFalse($number < $lower || $number > $upper);
+        }
     }
 
     /**
      * @covers NumbersPHP\Statistic::standardDev
-     * @todo   Implement testStandardDev().
      */
     public function testStandardDev()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+        $this->assertEquals(
+            37.777491829,
+            \NumbersPHP\Statistic::standardDev(array(-5, -4, -1, 0, 5, 100))
         );
     }
 
     /**
      * @covers NumbersPHP\Statistic::correlation
-     * @todo   Implement testCorrelation().
      */
     public function testCorrelation()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+        $this->assertTrue(
+            \NumbersPHP\Basic::numbersEqual(
+                \NumbersPHP\Statistic::correlation(
+                    array(-5, -4, -1, 0, 5, 100),
+                    array(-6, 5, 2, 5, 2, 6)
+                ),
+                0.43413125731182334,
+                \NumbersPHP\Numbers::EPSILON
+            )
         );
     }
 
     /**
      * @covers NumbersPHP\Statistic::rSquared
-     * @todo   Implement testRSquared().
      */
     public function testRSquared()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+        $source = array(10, 9, 8, 8, 7, 7, 6, 6.5, 6.4, 6.3, 6.2);
+        $regression = array(9.077131929916444, 8.66937771538526 , 8.279940244595563 , 7.907996710352883,
+            7.552761266818376, 7.213483369166244, 6.8894461878255076, 6.579965093955639,
+            6.284386212956255, 6.002085042954625, 5.732465135352174 );
+        $this->assertEquals(0.8491729985314136, \NumbersPHP\Statistic::rSquared($source, $regression));
     }
 
     /**
      * @covers NumbersPHP\Statistic::exponentialRegression
-     * @todo   Implement testExponentialRegression().
      */
     public function testExponentialRegression()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+        $source = array(10, 9, 8, 8, 7, 7, 6, 6.5, 6.4, 6.3, 6.2);
+        $regressionValues = array(9.077131929916444, 8.66937771538526 , 8.279940244595563 , 7.907996710352883,
+            7.552761266818376, 7.213483369166244, 6.8894461878255076, 6.579965093955639,
+            6.284386212956255, 6.002085042954625, 5.732465135352174 );
+
+        $exponentialRegression = \NumbersPHP\Statistic::exponentialRegression($source);
+        $regressionFunction = $exponentialRegression[0];
+        $regressionRSquared = $exponentialRegression[1];
+
+        $this->assertTrue(\NumbersPHP\Basic::numbersEqual($regressionRSquared, 0.8491729985314136));
+
+        $regressionFunctionValues = $regressionFunction(\NumbersPHP\Basic::range(1, count($source)));
+        for ($i = 0; $i < count($regressionValues); ++$i) {
+            $this->assertTrue(\NumbersPHP\Basic::numbersEqual($regressionValues[$i], $regressionFunctionValues[$i]));
+        }
+
+        $this->assertTrue(\NumbersPHP\Basic::numbersEqual($regressionFunction(1), 9.077131929916444));
+
+        $this->assertTrue(\NumbersPHP\Basic::numbersEqual($regressionFunction(15), 4.769782016165231));
     }
 
     /**
      * @covers NumbersPHP\Statistic::linearRegression
-     * @todo   Implement testLinearRegression().
      */
     public function testLinearRegression()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+        $arrayX = array(1, 2, 3, 4, 5, 7, 8, 9);
+        $arrayY = array(1, 2, 3, 4, 5, 7, 7, 9);
+        $regressionFunction = \NumbersPHP\Statistic::linearRegression($arrayX, $arrayY);
+        $this->assertTrue(\NumbersPHP\Basic::numbersEqual($regressionFunction(20), 19.07218683651805));
     }
 
     /**
      * @covers NumbersPHP\Statistic::covariance
-     * @todo   Implement testCovariance().
      */
     public function testCovariance()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
+        $this->assertTrue(
+            \NumbersPHP\Basic::numbersEqual(
+                \NumbersPHP\Statistic::covariance(
+                    array(-5, -4, -1, 0, 5, 100),
+                    array(-6, 5, 2, 5, 2, 6)
+                ),
+                66.05555555555556,
+                \NumbersPHP\Numbers::EPSILON
+            )
         );
     }
 }
