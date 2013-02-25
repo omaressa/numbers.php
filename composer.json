@@ -1,5 +1,5 @@
 {
-    "name": "powder96/NumbersPHP",
+    "name": "powder96/numbers.php",
     "type": "library",
     "description": "Advanced Mathematics Library for PHP (port of Numbers.js)",
     "keywords": ["math", "mathematics", "numbers", "arithmetic", "statistics"],
