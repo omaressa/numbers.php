@@ -240,13 +240,12 @@ class BasicTest extends \PHPUnit_Framework_TestCase
      */
     public function testShuffle()
     {
-        $this->assertTrue(
-            arrays_are_similar(
-                array(10, 20, 30, 40, 50, 60, 70),
-                \NumbersPHP\Basic::shuffle(array(10, 20, 30, 40, 50, 60, 70))
-            ),
-            'shuffle should return a different version of input array'
-        );
+        $expected = array(10, 20, 30, 40, 50, 60, 70);
+        $result = \NumbersPHP\Basic::shuffle(array(10, 20, 30, 40, 50, 60, 70));
+
+        $this->assertNotEquals($expected, $result);
+        sort($result);
+        $this->assertEquals($expected, $result);
     }
 
     /**
