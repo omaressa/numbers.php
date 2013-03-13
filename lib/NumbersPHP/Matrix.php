@@ -22,21 +22,6 @@ namespace NumbersPHP;
 final class Matrix
 {
     /**
-     * Return a deep copy of the input matrix.
-     *
-     * @param array $matrix matrix to copy.
-     * @return array copied matrix.
-     * @throws \Exception
-     */
-    public static function deepCopy($matrix)
-    {
-        if (!isset($matrix[0][0])) {
-            throw new \Exception('Input cannot be a vector.');
-        }
-        return $matrix;
-    }
-
-    /**
      * Return true if matrix is square, false otherwise.
      *
      * @param array $matrix

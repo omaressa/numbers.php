@@ -31,26 +31,6 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers NumbersPHP\Matrix::deepCopy
-     */
-    public function testDeepCopy()
-    {
-        $matrix = array(array(1, 2),
-            array(2, 1));
-        $copy = \NumbersPHP\Matrix::deepCopy($matrix);
-        $this->assertEquals($matrix, $copy);
-    }
-
-    /**
-     * @covers NumbersPHP\Matrix::deepCopy
-     * @expectedException \Exception
-     */
-    public function testDeepCopyException()
-    {
-        \NumbersPHP\Matrix::deepCopy(array(1, 2));
-    }
-
-    /**
      * @covers NumbersPHP\Matrix::isSquare
      */
     public function testIsSquare()
