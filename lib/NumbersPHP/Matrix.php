@@ -132,6 +132,68 @@ final class Matrix
         return $product;
     }
 
+    
+    /**
+    * Inverse of  a given matrix.
+    * 
+    * For a given matrix A, inverse B is given as AB = BA = I.
+    * Uses Gauss-Jordan_elimination Method for Inversion
+    * @param Array i.e a matrix to inverse
+    * @return Inverse of a  matrix
+    */
+    
+    public static function inverse($matrix)
+    {
+        $A = $matrix;
+        $n = count($A);
+        $I = identity_matrix($n);
+        for ($i = 0; $i < $n; ++ $i) {
+            $A[$i] = array_merge($A[$i], $I[$i]);
+        }
+        for ($j = 0; $j < $n-1; ++ $j) {
+            for ($i = $j+1; $i < $n; ++ $i) {
+                if ($A[$i][$j] !== 0) {
+                    $scalar = $A[$j][$j] / $A[$i][$j];
+                    for ($jj = $j; $jj < $n*2; ++ $jj) {
+                        $A[$i][$jj] *= $scalar;
+                        $A[$i][$jj] -= $A[$j][$jj];
+                    }
+                }
+            }
+            if ($debug) {
+                print_matrix($A);
+            }
+        }
+        for ($j = $n-1; $j > 0; -- $j) {
+            for ($i = $j-1; $i >= 0; -- $i) {
+                if ($A[$i][$j] !== 0) {
+                    $scalar = $A[$j][$j] / $A[$i][$j];
+                    for ($jj = $i; $jj < $n*2; ++ $jj) {
+                        $A[$i][$jj] *= $scalar;
+                        $A[$i][$jj] -= $A[$j][$jj];
+                    }
+                }
+            }
+        }
+        for ($j = 0; $j < $n; ++ $j) {
+            if ($A[$j][$j] !== 1) {
+                $scalar = 1 / $A[$j][$j];
+                for ($jj = $j; $jj < $n*2; ++ $jj) {
+                    $A[$j][$jj] *= $scalar;
+                }
+            }
+        }
+        $Inv = array();
+        for ($i = 0; $i < $n; ++ $i) {
+            $Inv[$i] = array_slice($A[$i], $n);
+        }
+        return $Inv;
+    }
+    
+    
+    
+    
+    
     /**
      * Multiply two matrices. They must abide by standard matching.
      *
