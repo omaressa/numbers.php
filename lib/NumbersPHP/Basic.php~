@@ -152,7 +152,7 @@ final class Basic
 
     /**
      * Calculate the greastest common divisor amongst two integers.
-     * Implementation of Euclid Algorithm to improve Run Time 
+     * Implementation of Euclid Algorithm to increase Run Time Complexity
      *
      * @param $a number A.
      * @param $b  number B.
