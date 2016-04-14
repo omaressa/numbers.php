@@ -95,6 +95,8 @@ final class Matrix
         return $transposed;
     }
 
+    
+
     /**
      * Create an identity matrix of dimension n x n.
      *
